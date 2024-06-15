@@ -1,27 +1,25 @@
 # AirlineManager20
 
+Airline Manager 2.0
+
+An airline manager browser game that will allow the user to purchase planes, hire staff, manage airports, create and manage routes, implement multiplayer, enable trade and mouch more.
+For the map I used Leaflet and for the DB I will use Supabase. For the routing I used React Router and for the styling I used styled-components.
+The game is made out of pure passion for aviation and it's ment to be a browser game at first and later if it's possible to be converted in an android/iOS app.
+
+Possible features and fixes
+
+- implement multiplayer
+- allow to add friends
+- implement chat
+- add events (bad weather, mechanical problems, staff issues, all based on how good you manage your company)
+- add discounts
+- manage ground services
+- making the page responsive for all devices
+  and more...
+
+The Map is provided by Leaflet, an open-source JavaScript library for mobile-friendly interactive maps. (https://leafletjs.com/)
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.1.
+This project is using Boostrap 5
 
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+> Discontinued React version can be found here: https://github.com/danciueduard/airline-manager.git

@@ -1,1 +1,32 @@
 /* You can add global styles to this file, and also import other style files */
+
+.am-bg-primary {
+  background-color: #334155 !important;
+}
+
+.am-bg-secondary {
+  background-color: #fb923c !important;
+}
+
+.am-primary {
+  color: #334155 !important;
+}
+
+.am-secondary {
+  color: #fb923c !important;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5 {
+  margin-bottom: 0;
+}
+
+.leaflet-marker-icon {
+  width: 0 !important;
+  height: 0 !important;
+  border: none !important;
+}
