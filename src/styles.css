@@ -30,3 +30,8 @@ h5 {
   height: 0 !important;
   border: none !important;
 }
+
+.map-dark-mode {
+  filter: brightness(0.6) invert(1) contrast(2) hue-rotate(200deg) saturate(0.5)
+    brightness(0.7);
+}
