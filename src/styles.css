@@ -35,3 +35,25 @@ h5 {
   filter: brightness(0.6) invert(1) contrast(2) hue-rotate(200deg) saturate(0.5)
     brightness(0.7);
 }
+
+/* Bootstrap custom classes */
+
+.p-10 {
+  padding: 10rem;
+}
+
+.py-10 {
+  padding: 10rem 0;
+}
+
+.px-10 {
+  padding: 0 10rem;
+}
+
+.gap-7 {
+  gap: 5rem;
+}
+
+.gap-10 {
+  gap: 10rem;
+}

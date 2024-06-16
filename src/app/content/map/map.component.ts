@@ -25,13 +25,13 @@ export class MapComponent {
     zoomControl: false,
     layers: [
       tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        maxZoom: 18,
+        maxZoom: 12,
         attribution: "...",
 
         // className: "map-dark-mode", // FOR DARK MODE
       }),
     ],
-    zoom: 14,
+    zoom: 12,
     center: latLng(44.57054724019442, 26.095390875193942),
   };
 
