@@ -16,6 +16,10 @@
   color: #fb923c !important;
 }
 
+body {
+  font-family: "Nova Square", sans-serif;
+}
+
 p,
 h1,
 h2,

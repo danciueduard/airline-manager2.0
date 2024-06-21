@@ -1,1 +1,23 @@
+.inactive p,
+.inactive i {
+  opacity: 0.5;
+}
 
+.active p,
+.active i {
+  opacity: 1;
+}
+
+/* .active::after {
+  color: #334155;
+  font-size: 30px;
+  content: "";
+  transform: translateY(85%);
+  position: absolute;
+} */
+
+@media (min-width: 720px) {
+  .container {
+    width: 720px !important;
+  }
+}
