@@ -3,7 +3,7 @@
 Airline Manager 2.0
 
 An airline manager browser game that will allow the user to purchase planes, hire staff, manage airports, create and manage routes, implement multiplayer, enable trade and mouch more.
-For the map I used Leaflet and for the DB I will use Supabase. For the routing I used React Router and for the styling I used styled-components.
+For the map I used Leaflet and for the DB I will use Supabase.
 The game is made out of pure passion for aviation and it's ment to be a browser game at first and later if it's possible to be converted in an android/iOS app.
 
 Possible features and fixes
