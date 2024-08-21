@@ -6,6 +6,7 @@
 .active p,
 .active i {
   opacity: 1;
+  transition: 300ms;
 }
 
 /* .active::after {

@@ -1,31 +1,58 @@
 <div class="fixed-bottom container">
   <div>
     <!-- menu -->
-
-    <app-menu></app-menu>
+    <app-menu
+      *ngIf="menuOpen"
+      [openedTab]="activeTab"
+      (closeMenu)="closeMenu($event)"
+    >
+      <router-outlet></router-outlet>
+    </app-menu>
 
     <!-- footer -->
     <div
-      class="d-flex justify-content-center gap-5 bg-white px-10 py-2 rounded-bottom-4 mb-2 text-white shadow-lg inactive"
-      style="--bs-bg-opacity: 0.85"
+      [ngClass]="menuOpen ? 'inactive' : 'rounded-top-4'"
+      class="d-flex justify-content-center gap-5 bg-white px-10 py-2 rounded-bottom-4 mb-2 text-white shadow-lg`"
+      style="--bs-bg-opacity: 0.75"
     >
-      <div class="d-flex flex-column align-items-center active">
+      <a
+        routerLinkActive="active"
+        routerLink="/fleet"
+        (click)="openMenu('fleet')"
+        href="#"
+        class="d-flex flex-column align-items-center text-decoration-none"
+      >
         <i class="bi bi-airplane am-secondary h3 mb-0"></i>
-
         <p class="am-primary">FLEET</p>
-      </div>
-      <div class="d-flex flex-column align-items-center">
+      </a>
+      <a
+        (click)="openMenu('airports')"
+        routerLinkActive="active"
+        routerLink="/airports"
+        href="#"
+        class="d-flex flex-column align-items-center text-decoration-none"
+      >
         <i class="bi bi-buildings am-secondary h3 mb-0"></i>
         <p class="am-primary">AIRPORTS</p>
-      </div>
-      <div class="d-flex flex-column align-items-center">
+      </a>
+      <a
+        (click)="openMenu('staff')"
+        routerLink="/staff"
+        href="#"
+        class="d-flex flex-column align-items-center text-decoration-none"
+      >
         <i class="bi bi-people am-secondary h3 mb-0"></i>
         <p class="am-primary">STAFF</p>
-      </div>
-      <div class="d-flex flex-column align-items-center">
+      </a>
+      <a
+        (click)="openMenu('services')"
+        routerLink="/services"
+        href="#"
+        class="d-flex flex-column align-items-center text-decoration-none"
+      >
         <i class="bi bi-truck am-secondary h3 mb-0"></i>
         <p class="am-primary">SERVICES</p>
-      </div>
+      </a>
     </div>
   </div>
 </div>

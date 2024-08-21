@@ -4,7 +4,7 @@
     class="am-bg-primary am-secondary rounded-top px-3 d-flex align-items-center"
     style="width: 10rem"
   >
-    AIRPORTS
+    {{ openedTab | uppercase }}
   </div>
 
   <!-- menu header -->
@@ -17,14 +17,16 @@
       <img src="../../assets/img/logo1-white.png" width="170rem" alt="" />
       <div class="d-flex gap-4 mx-3">
         <img src="../../assets/img/logo2-white.png" width="60rem" alt="" />
-        <button class="btn text-white">X</button>
+        <button class="btn text-white" (click)="onCloseMenu()" role="button">
+          X
+        </button>
       </div>
     </div>
 
     <!-- menu content -->
 
     <div class="d-flex justify-content-center bg-white container">
-      <app-airports></app-airports>
+      <ng-content></ng-content>
     </div>
   </div>
 </div>

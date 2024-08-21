@@ -37,3 +37,43 @@
   );
   pointer-events: none; /* Allow clicking through the overlay */
 }
+
+.active-country {
+  transform: scale(1) !important;
+  opacity: 100% !important;
+}
+
+.airport-frame {
+  background: url(../../../../assets/img/airport-background.jpg);
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.airport-frame::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: inherit; /* Inherits the background image */
+  background-size: inherit; /* Matches the original background settings */
+  background-position: inherit;
+  filter: blur(2px) brightness(0.7); /* Apply blur and darken effect */
+  border-radius: inherit; /* Matches the rounded corners */
+  z-index: 1; /* Places the overlay above the background but below the content */
+}
+
+.airport-frame p,
+header,
+i,
+img {
+  position: relative;
+  z-index: 2; /* Ensures content appears above the overlay */
+}
+
+.airport-frame-flag {
+  position: absolute;
+}

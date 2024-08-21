@@ -1,10 +1,14 @@
-<div class="container">
+<p class="text-white bg-danger p-2">
+  TODO: Show only 5 elements, enable scroll
+</p>
+
+<div class="container d-flex justify-content-center">
   <div class="row justify-content-center align-items-center g-4 p-4">
     <div class="col">
       <img
         src="../../../../assets/country-flags/ro.png"
         alt="flag of a country"
-        class="rounded-circle shadow opacity-50"
+        class="rounded-circle shadow opacity-50 active-country"
         width="45px"
         height="45px"
         style="transform: scale(0.8)"
@@ -14,9 +18,10 @@
       <img
         src="../../../../assets/country-flags/gb.png"
         alt="flag of a country"
-        class="rounded-circle shadow"
+        class="rounded-circle shadow opacity-50"
         width="45px"
         height="45px"
+        style="transform: scale(0.8)"
       />
     </div>
     <div class="col">
@@ -32,23 +37,38 @@
   </div>
 </div>
 
-<header>JFK International Airport</header>
-
-<nav>
-  <div class="menu-item">
-    <img src="parking-icon.png" alt="Parking" width="24" height="24" />
-    <a href="#parking">Parking Spots</a>
+<div class="container d-flex flex-column gap-2">
+  <div
+    *ngFor="let airport of airports; index as i"
+    class="container shadow-lg px-5 py-2 rounded-4 airport-frame"
+  >
+    <img
+      class="position-absolute start-0 top-0"
+      [src]="countryFlag(airport.country)"
+      alt=""
+      width="50px"
+      height="100px"
+    />
+    <header class="mb-2 text-white mx-3">
+      {{ airport.name }}
+    </header>
+    <nav class="d-flex gap-3 text-white mx-3">
+      <div class="menu-item d-flex gap-1">
+        <i class="bi bi-p-circle am-secondary"></i>
+        <p href="#parking">{{ airport.parkingSpots }}</p>
+      </div>
+      <div class="menu-item d-flex gap-1">
+        <i class="bi bi-house-gear am-secondary"></i>
+        <p href="#hangars">{{ airport.hangars }}</p>
+      </div>
+      <div class="menu-item d-flex gap-1">
+        <i class="bi bi-arrow-left-right am-secondary"></i>
+        <p href="#routes">{{ airport.routes }}</p>
+      </div>
+      <div class="menu-item d-flex gap-1">
+        <i class="bi bi-h-circle am-secondary"></i>
+        <p href="#helipads">{{ airport.helipads }}</p>
+      </div>
+    </nav>
   </div>
-  <div class="menu-item">
-    <img src="hangar-icon.png" alt="Hangar" width="24" height="24" />
-    <a href="#hangars">Hangars</a>
-  </div>
-  <div class="menu-item">
-    <img src="routes-icon.png" alt="Routes" width="24" height="24" />
-    <a href="#routes">Routes</a>
-  </div>
-  <div class="menu-item">
-    <img src="helipad-icon.png" alt="Helipads" width="24" height="24" />
-    <a href="#helipads">Helipads</a>
-  </div>
-</nav>
+</div>
