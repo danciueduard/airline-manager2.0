@@ -19,7 +19,7 @@ import { CommonModule } from "@angular/common";
   styleUrl: "./footer.component.css",
 })
 export class FooterComponent {
-  menuOpen: boolean = false;
+  menuOpen: boolean = true; // TRUE FOR TESTING PURPOSES
   activeTab: string;
 
   constructor(private router: Router) {}

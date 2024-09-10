@@ -63,7 +63,135 @@ export class StorageContainerService {
       helipads: 0,
     },
   ];
+  staff = [
+    {
+      role: "pilot",
+      name: "John Doe1",
+      skill: 10,
+      experience: 12500,
+      salary: 100000,
+    },
+    // {
+    //   role: "pilot",
+    //   name: "John Doe",
+    //   skill: 10,
+    //   experience: 12500,
+    //   salary: 100000,
+    // },
+    // {
+    //   role: "stewardese",
+    //   name: "Jane Doe",
+    //   skill: 10,
+    //   experience: 12500,
+    //   salary: 100000,
+    // },
+    // {
+    //   role: "stewardese",
+    //   name: "Jane Doe1",
+    //   skill: 10,
+    //   experience: 12500,
+    //   salary: 100000,
+    // },
+    // {
+    //   role: "stewardese",
+    //   name: "Jane Doe2",
+    //   skill: 10,
+    //   experience: 12500,
+    //   salary: 100000,
+    // },
+    // {
+    //   role: "stewardese",
+    //   name: "Jane Doe3",
+    //   skill: 10,
+    //   experience: 12500,
+    //   salary: 100000,
+    // },
+    // {
+    //   role: "engineer",
+    //   name: "John Doe Engineer1",
+    //   skill: 10,
+    //   experience: 12500,
+    //   salary: 100000,
+    // },
+    // {
+    //   role: "engineer",
+    //   name: "John Doe Engineer2",
+    //   skill: 10,
+    //   experience: 12500,
+    //   salary: 100000,
+    // },
+    // {
+    //   role: "engineer",
+    //   name: "John Doe Engineer3",
+    //   skill: 10,
+    //   experience: 12500,
+    //   salary: 100000,
+    // },
+    // {
+    //   role: "engineer",
+    //   name: "John Doe Engineer4",
+    //   skill: 10,
+    //   experience: 12500,
+    //   salary: 100000,
+    // },
 
+    // {
+    //   role: "stewardese",
+    //   name: "Jane Doe",
+    //   skill: 10,
+    //   experience: 12500,
+    //   salary: 100000,
+    // },
+    // {
+    //   role: "stewardese",
+    //   name: "Jane Doe1",
+    //   skill: 10,
+    //   experience: 12500,
+    //   salary: 100000,
+    // },
+    // {
+    //   role: "stewardese",
+    //   name: "Jane Doe2",
+    //   skill: 10,
+    //   experience: 12500,
+    //   salary: 100000,
+    // },
+    // {
+    //   role: "stewardese",
+    //   name: "Jane Doe3",
+    //   skill: 10,
+    //   experience: 12500,
+    //   salary: 100000,
+    // },
+    // {
+    //   role: "engineer",
+    //   name: "John Doe Engineer1",
+    //   skill: 10,
+    //   experience: 12500,
+    //   salary: 100000,
+    // },
+    // {
+    //   role: "engineer",
+    //   name: "John Doe Engineer2",
+    //   skill: 10,
+    //   experience: 12500,
+    //   salary: 100000,
+    // },
+    // {
+    //   role: "engineer",
+    //   name: "John Doe Engineer3",
+    //   skill: 10,
+    //   experience: 12500,
+    //   salary: 100000,
+    // },
+    // {
+    //   role: "engineer",
+    //   name: "John Doe Engineer4",
+    //   skill: 10,
+    //   experience: 12500,
+    //   salary: 100000,
+    // },
+  ];
   constructor() {}
 
   getFleet() {
@@ -72,5 +200,9 @@ export class StorageContainerService {
 
   getAirports() {
     return this.airports;
+  }
+
+  getStaff() {
+    return this.staff;
   }
 }
