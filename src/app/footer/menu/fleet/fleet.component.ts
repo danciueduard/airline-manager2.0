@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { Airplane } from "../../../shared/Airplane.model";
+import { Airplane } from "../../../shared/models/Airplane.model";
 import { CommonModule } from "@angular/common";
 import { StorageContainerService } from "../../../shared/storage-container.service";
 

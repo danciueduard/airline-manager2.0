@@ -1,0 +1,16 @@
+.staff-menu {
+  display: none !important;
+  position: absolute;
+  top: 2rem;
+}
+
+.staff-icon:hover .staff-menu {
+  display: flex !important;
+  scale: 1;
+}
+
+.staff-icon:hover {
+  scale: 1.4;
+  transition: 100ms;
+  transform: translateY(10%);
+}
