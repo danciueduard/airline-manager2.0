@@ -3,6 +3,7 @@
   --am-primary: #334155;
   --am-secondary: #fb923c;
   --am-lightblue: #015aff25;
+  --am-green: #15803d;
 }
 
 .am-bg-primary {
@@ -19,6 +20,14 @@
 
 .am-secondary {
   color: #fb923c !important;
+}
+
+.am-green {
+  color: #15803d;
+}
+
+.am-bg-green {
+  background-color: #15803d;
 }
 
 body {

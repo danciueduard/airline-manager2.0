@@ -6,9 +6,9 @@
 
 .container {
   background-color: var(--am-lightblue);
+  transition: 500ms;
 }
 
 .container:hover {
   background-color: white;
-  transition: 500ms;
 }
