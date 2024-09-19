@@ -1,0 +1,14 @@
+.progress-bar {
+  width: 100px;
+  height: 10px;
+  background-color: red;
+}
+
+.container {
+  background-color: var(--am-lightblue);
+}
+
+.container:hover {
+  background-color: white;
+  transition: 500ms;
+}

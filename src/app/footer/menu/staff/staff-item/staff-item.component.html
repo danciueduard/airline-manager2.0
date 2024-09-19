@@ -16,7 +16,11 @@
     >
       <p class="am-primary">{{ member.name }}</p>
       <p class="am-secondary">{{ member.role | titlecase }}</p>
-      <button class="btn border border-1" (click)="manageStaff(member.name)">
+      <button
+        *ngIf="allowManage"
+        class="btn border border-1"
+        (click)="manageStaff(member)"
+      >
         MANAGE
       </button>
     </div>

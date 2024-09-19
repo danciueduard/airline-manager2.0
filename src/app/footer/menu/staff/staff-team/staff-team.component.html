@@ -1,0 +1,54 @@
+<div class="d-flex flex-column gap-2">
+  <div
+    (click)="selectTeam(item)"
+    class="container shadow-sm pt-2 px-3"
+    *ngFor="let item of teamComposition"
+  >
+    <div class="row">
+      <div class="col">
+        <span><i class="bi bi-microsoft-teams"></i></span>
+        {{ item.teamName | titlecase }}
+      </div>
+      <div class="col">
+        <div (click)="getPlaneById(item.teamPlane.planeId)">
+          <span><i class="bi bi-airplane"></i></span>
+          {{ item.teamPlane.planeName }}
+        </div>
+      </div>
+      <div class="col">
+        <div class="d-flex gap-1">
+          <p (click)="getAirportByICAO(item.teamRoute.airport1)">
+            {{ item.teamRoute.airport1 }}
+          </p>
+          <div class="d-flex">
+            <span><i class="bi bi-arrow-right am-secondary"></i></span>
+          </div>
+          <p
+            class="am-secondary"
+            (click)="getAirportByICAO(item.teamRoute.airport2)"
+          >
+            {{ item.teamRoute.airport2 }}
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <staff-item
+          [allowManage]="false"
+          [staff]="item.teamPilots"
+        ></staff-item>
+      </div>
+      <div class="col">
+        <staff-item [allowManage]="false" [staff]="item.teamCrew"></staff-item>
+      </div>
+      <div class="col d-flex justify-content-center align-items-center">
+        <!-- <div class="progress-bar"></div> -->
+        <app-star-rating
+          class="am-secondary"
+          [rating]="item.rating"
+        ></app-star-rating>
+      </div>
+    </div>
+  </div>
+</div>

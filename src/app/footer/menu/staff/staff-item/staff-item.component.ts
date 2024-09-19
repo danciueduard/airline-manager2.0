@@ -10,6 +10,7 @@ import { Component, Input } from "@angular/core";
 })
 export class StaffItem {
   @Input() staff = [];
+  @Input() allowManage = true;
 
   constructor() {}
 

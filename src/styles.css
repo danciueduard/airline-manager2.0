@@ -1,4 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+  --am-primary: #334155;
+  --am-secondary: #fb923c;
+  --am-lightblue: #015aff25;
+}
 
 .am-bg-primary {
   background-color: #334155 !important;

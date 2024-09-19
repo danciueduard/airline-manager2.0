@@ -1,0 +1,16 @@
+<div class="d-flex">
+  <!-- Full Stars -->
+  <ng-container *ngFor="let star of fullStars">
+    <i class="bi bi-star-fill"></i>
+  </ng-container>
+
+  <!-- Half Star -->
+  <ng-container *ngIf="halfStar">
+    <i class="bi bi-star-half"></i>
+  </ng-container>
+
+  <!-- Empty Stars -->
+  <ng-container *ngFor="let star of emptyStars">
+    <i class="bi bi-star"></i>
+  </ng-container>
+</div>
