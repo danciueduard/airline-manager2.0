@@ -1,4 +1,4 @@
-import { AfterViewInit, Component } from "@angular/core";
+import { AfterViewInit, Component, OnInit } from "@angular/core";
 import { LeafletModule } from "@asymmetrik/ngx-leaflet";
 import { icons } from "./icons";
 import {
@@ -12,6 +12,7 @@ import {
 } from "leaflet";
 import "leaflet/dist/images/marker-shadow.png";
 import "leaflet/dist/images/marker-icon.png";
+import { StorageContainerService } from "../../shared/storage-container.service";
 
 @Component({
   selector: "app-map",
@@ -20,7 +21,13 @@ import "leaflet/dist/images/marker-icon.png";
   templateUrl: "./map.component.html",
   styleUrl: "./map.component.css",
 })
-export class MapComponent {
+export class MapComponent implements OnInit {
+  constructor(private storageContainer: StorageContainerService) {}
+
+  ngOnInit(): void {
+    this.storageContainer.getAirports();
+  }
+
   options = {
     zoomControl: false,
     layers: [

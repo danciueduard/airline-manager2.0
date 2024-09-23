@@ -52,6 +52,7 @@ export class StorageContainerService {
       hangars: 1,
       routes: 3,
       helipads: 1,
+      coordinates: [44.57054724019442, 26.095390875193942],
     },
     {
       name: "Aeroport International Iasi",
