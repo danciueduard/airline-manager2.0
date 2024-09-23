@@ -1,0 +1,38 @@
+<div class="d-flex align-items-center gap-5 my-5">
+  <div>
+    <h5>FUEL: 12.345.678 liters</h5>
+    <app-star-rating
+      class="am-secondary"
+      [rating]="fuelRating"
+    ></app-star-rating>
+  </div>
+  <div class="border shadow-sm py-2 offer-card">
+    <div class="mt-2 mb-3">
+      <h4 class="pb-5 pt-1 px-2">
+        OFFER OF <span class="bg-black text-white p-1">THE DAY</span>
+      </h4>
+      <div class="pic-container" #gasTruckImageContainer>
+        <img
+          class="gas-truck-picture"
+          src="../../../../assets/img/services-fuel-truck.jpg"
+          alt="a fuel truck"
+          width="200px"
+          height="auto"
+        />
+        <!-- the DISCOUNT part is rendered by Renderer2. Check TS file -->
+      </div>
+      <div class="d-flex flex-column m-0 gap-3 mt-4">
+        <div class="mx-3">
+          <p>100$ / liter</p>
+          <div class="horizontal-line"></div>
+        </div>
+        <div class="d-flex flex-column gap-2 align-items-center">
+          <button #buyAtDsicountButton class="offer-btn discount">
+            BUY 1000 tons
+          </button>
+          <button class="offer-btn">BUY custom</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

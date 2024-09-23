@@ -2,7 +2,7 @@ import { Component, ElementRef, OnInit } from "@angular/core";
 import { StorageContainerService } from "../../../shared/storage-container.service";
 import { CommonModule } from "@angular/common";
 import { Element } from "@angular/compiler";
-import { StaffItem } from "./staff-item/staff-item.component";
+import { StaffItem } from "../../../shared/components/staff-item/staff-item.component";
 import { StaffTeamComponent } from "./staff-team/staff-team.component";
 
 @Component({
