@@ -1,45 +1,81 @@
-// src/app/supabase.service.ts
-import { Injectable, OnInit } from "@angular/core";
+import { Injectable } from "@angular/core";
 import { createClient, SupabaseClient } from "@supabase/supabase-js";
-require("dotenv").config();
-
-// Replace these with your actual Supabase project details
-const SUPABASE_URL = "https://ihrpnwirjkzyheypcilz.supabase.co";
-const SUPABASE_ANON_KEY = "";
+import { environment } from "../../environments/environment.prod";
+import { max } from "rxjs";
 
 @Injectable({
   providedIn: "root",
 })
 export class SupabaseService {
-  private supabase: SupabaseClient;
+  supabase: SupabaseClient = createClient(
+    environment.supabaseUrl,
+    environment.supabaseAnonKey
+  );
+  supabaseService: any;
+  selectedFile: any;
 
-  constructor() {
-    this.supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+  async getAirportByICAO(icao) {
+    let { data, error } = await this.supabase
+      .from("airports")
+      .select("*")
+      .eq("icao", icao);
+
+    return console.log(data);
   }
 
-  // Example function: Get data from a table
-  async getData() {
-    let { data, error } = await this.supabase
-      .from("your-table-name")
-      .select("*");
+  async getPublicImgUrl(bucketName: string, imgName: string) {
+    const { data } = this.supabase.storage
+      .from(bucketName)
+      .getPublicUrl(imgName);
+
+    return data.publicUrl;
+  }
+
+  async uploadImg(planeImg) {
+    const { data, error } = await this.supabase.storage
+      .from("img")
+      .upload(`planeImg/${planeImg.name}`, planeImg, {
+        cacheControl: "3600",
+        upsert: false,
+      });
 
     if (error) {
-      console.error("Error fetching data: ", error);
+      console.log(error);
     }
-    return data;
   }
 
-  // Example function: Insert data into a table
-  async insertData(newData: any) {
-    let { data, error } = await this.supabase
-      .from("your-table-name")
-      .insert([newData]);
+  async removeImg(planeImg) {
+    const { data, error } = await this.supabase.storage
+      .from("img")
+      .remove([`planeImg/${planeImg.name}`]);
 
     if (error) {
-      console.error("Error inserting data: ", error);
+      console.log(error);
     }
-    return data;
   }
 
-  // Add more functions as needed
+  async uploadPlane(formModel) {
+    const { data, error } = await this.supabase
+      .from("planes")
+      .insert([
+        {
+          name: formModel.name,
+          planeImg: formModel.planeImg,
+          capacity: formModel.capacity,
+          range: formModel.range,
+          cost: formModel.cost,
+          max_speed: formModel.max_speed,
+          normal_speed: formModel.normal_speed,
+          crew_capacity: formModel.crew_capacity,
+          fuel_capacity: formModel.fuel_capacity,
+          min_fuel_consumption: formModel.min_fuel_consumption,
+          max_fuel_consumption: formModel.max_fuel_consumption,
+        },
+      ])
+      .select();
+    if (error) {
+      return console.log(error);
+    }
+    console.log("upload complete");
+  }
 }

@@ -1,0 +1,158 @@
+<div class="container">
+  <h1 class="bg-danger text-white">TODO: resolve dataflow for push in DB</h1>
+  <h2>Plane Details Form</h2>
+  <form #formRef="ngForm" (ngSubmit)="onSubmit()" novalidate>
+    <div class="d-flex gap-3">
+      <div>
+        <!-- Name -->
+        <div class="form-group">
+          <label for="name">Plane Name:</label>
+          <input
+            type="text"
+            id="name"
+            class="form-control"
+            required
+            name="name"
+            [(ngModel)]="formModel.name"
+          />
+        </div>
+
+        <!-- Plane Image -->
+        <div class="form-group">
+          <label for="planeImg">Plane Image:</label>
+          <input
+            type="file"
+            id="fileInput"
+            (change)="onFileChange($event)"
+            required
+          />
+        </div>
+
+        <!-- Capacity -->
+        <div class="form-group">
+          <label for="capacity">Capacity (Passengers):</label>
+          <input
+            type="number"
+            id="capacity"
+            class="form-control"
+            required
+            name="capacity"
+            [(ngModel)]="formModel.capacity"
+          />
+        </div>
+
+        <!-- Range -->
+        <div class="form-group">
+          <label for="range">Range (in km):</label>
+          <input
+            type="number"
+            id="range"
+            class="form-control"
+            required
+            name="range"
+            [(ngModel)]="formModel.range"
+          />
+        </div>
+
+        <!-- Cost -->
+        <div class="form-group">
+          <label for="cost">Cost (in USD):</label>
+          <input
+            type="number"
+            id="cost"
+            class="form-control"
+            required
+            name="cost"
+            [(ngModel)]="formModel.cost"
+          />
+        </div>
+      </div>
+      <div>
+        <!-- Max Speed -->
+        <div class="form-group">
+          <label for="max_speed">Max Speed (km/h):</label>
+          <input
+            type="number"
+            id="max_speed"
+            class="form-control"
+            required
+            name="max_speed"
+            [(ngModel)]="formModel.max_speed"
+          />
+        </div>
+
+        <!-- Normal Speed -->
+        <div class="form-group">
+          <label for="normal_speed">Normal Speed (km/h):</label>
+          <input
+            type="number"
+            id="normal_speed"
+            class="form-control"
+            required
+            name="normal_speed"
+            [(ngModel)]="formModel.normal_speed"
+          />
+        </div>
+
+        <!-- Crew Capacity -->
+        <div class="form-group">
+          <label for="crew_capacity">Crew Capacity:</label>
+          <input
+            type="number"
+            id="crew_capacity"
+            class="form-control"
+            required
+            name="crew_capacity"
+            [(ngModel)]="formModel.crew_capacity"
+          />
+        </div>
+
+        <!-- Fuel Capacity -->
+        <div class="form-group">
+          <label for="fuel_capacity">Fuel Capacity (liters):</label>
+          <input
+            type="number"
+            id="fuel_capacity"
+            class="form-control"
+            required
+            name="fuel_capacity"
+            [(ngModel)]="formModel.fuel_capacity"
+          />
+        </div>
+
+        <!-- Min Fuel Consumption -->
+        <div class="form-group">
+          <label for="min_fuel_consumption"
+            >Min Fuel Consumption (liters/hour):</label
+          >
+          <input
+            type="number"
+            id="min_fuel_consumption"
+            class="form-control"
+            required
+            name="min_fuel_consumption"
+            [(ngModel)]="formModel.min_fuel_consumption"
+          />
+        </div>
+
+        <!-- Max Fuel Consumption -->
+        <div class="form-group">
+          <label for="max_fuel_consumption"
+            >Max Fuel Consumption (liters/hour):</label
+          >
+          <input
+            type="number"
+            id="max_fuel_consumption"
+            class="form-control"
+            required
+            name="max_fuel_consumption"
+            [(ngModel)]="formModel.max_fuel_consumption"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- Submit Button -->
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>

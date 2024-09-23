@@ -22,7 +22,6 @@
     "@supabase/supabase-js": "^2.45.4",
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",
-    "dotenv": "^16.4.5",
     "leaflet": "^1.9.4",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
@@ -41,5 +40,10 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
     "typescript": "~5.4.2"
+  },
+  "overrides": {
+    "@supabase/supabase-js": {
+      "@supabase/gotrue-js": "2.61.0"
+    }
   }
 }

@@ -1,0 +1,11 @@
+.admin-tools {
+  background-color: rgb(255, 255, 255);
+  position: absolute;
+  top: 10%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 80%;
+  width: 50%;
+  z-index: 9999;
+}
