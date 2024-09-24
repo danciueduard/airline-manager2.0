@@ -7,7 +7,8 @@ import { FuelComponent } from "./footer/menu/services-menu/fuel/fuel.component";
 import { MaintenanceComponent } from "./footer/menu/services-menu/maintenance/maintenance.component";
 import { AdminToolsComponent } from "./admin-tools/admin-tools.component";
 import { AppComponent } from "./app.component";
-import { AddPlanesComponent } from "./admin-tools/add-planes/add-planes.component";
+import { ManagePlanesComponent } from "./admin-tools/manage-planes/manage-planes.component";
+import { ManageWorkersComponent } from "./admin-tools/manage-workers/manage-workers.component";
 
 export const routes: Routes = [
   { path: "", component: AppComponent },
@@ -28,8 +29,12 @@ export const routes: Routes = [
     outlet: "popup",
     children: [
       {
-        path: "add-planes",
-        component: AddPlanesComponent,
+        path: "manage-planes",
+        component: ManagePlanesComponent,
+      },
+      {
+        path: "manage-workers",
+        component: ManageWorkersComponent,
       },
     ],
   },

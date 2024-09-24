@@ -1,16 +1,17 @@
 import { Component, PLATFORM_INITIALIZER } from "@angular/core";
 import { FormsModule } from "@angular/forms";
-import { SupabaseService } from "../../shared/supabase-service.service";
+import { SupabaseService } from "../../shared/supabase/supabase-service.service";
 
 @Component({
   selector: "app-add-planes",
   standalone: true,
   imports: [FormsModule],
-  templateUrl: "./add-planes.component.html",
-  styleUrl: "./add-planes.component.css",
+  templateUrl: "./manage-planes.component.html",
+  styleUrl: "./manage-planes.component.css",
 })
-export class AddPlanesComponent {
+export class ManagePlanesComponent {
   selectedFile: File | null = null;
+  publicImgUrl: string | null = null;
   constructor(private supabaseService: SupabaseService) {}
 
   onFileChange(event: any) {
@@ -22,7 +23,7 @@ export class AddPlanesComponent {
 
   formModel = {
     name: "",
-    planeImg: "",
+    // planeImg is handled by uploadImage() function
     capacity: 0,
     range: 0,
     cost: 0,
@@ -34,13 +35,16 @@ export class AddPlanesComponent {
     max_fuel_consumption: 0,
   };
 
-  // Handle form submission
-  onSubmit() {
-    this.uploadImage();
-    // console.log(this.formModel);
-    this.supabaseService.uploadPlane(this.formModel);
+  // Handle form submission AFTER the image has been uploaded
+  async onSubmit() {
+    await this.uploadImage();
+
+    if (!this.publicImgUrl) return console.error("no publicUrl found");
+
+    this.supabaseService.uploadPlane(this.formModel, this.publicImgUrl);
   }
 
+  // Handle image submission
   uploadImage() {
     this.supabaseService.uploadImg(this.selectedFile);
     const planeURL = this.supabaseService.getPublicImgUrl(
@@ -48,7 +52,7 @@ export class AddPlanesComponent {
       this.selectedFile.name
     );
     planeURL.then((value) => {
-      this.formModel.planeImg = value;
+      this.publicImgUrl = value;
     });
   }
 }

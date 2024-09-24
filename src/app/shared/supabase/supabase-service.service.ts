@@ -1,7 +1,9 @@
 import { Injectable } from "@angular/core";
 import { createClient, SupabaseClient } from "@supabase/supabase-js";
-import { environment } from "../../environments/environment.prod";
+import { environment } from "../../../environments/environment.prod";
 import { max } from "rxjs";
+import { AddPlanesModel } from "../../admin-tools/manage-planes/AddPlanes.model";
+import { UploadPlanesModel } from "./supabase-models/UploadPlanes.model";
 
 @Injectable({
   providedIn: "root",
@@ -54,13 +56,14 @@ export class SupabaseService {
     }
   }
 
-  async uploadPlane(formModel) {
+  // Manage Planes
+  async uploadPlane(formModel: AddPlanesModel, imgUrl: string) {
     const { data, error } = await this.supabase
       .from("planes")
-      .insert([
+      .insert<UploadPlanesModel>([
         {
           name: formModel.name,
-          planeImg: formModel.planeImg,
+          planeImg: imgUrl, // handled separately by uploadImage() function.
           capacity: formModel.capacity,
           range: formModel.range,
           cost: formModel.cost,
@@ -74,8 +77,11 @@ export class SupabaseService {
       ])
       .select();
     if (error) {
-      return console.log(error);
+      console.error(error);
     }
     console.log("upload complete");
   }
+
+  // Manage Workers
+  async uploadWorker() {}
 }
