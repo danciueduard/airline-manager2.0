@@ -78,19 +78,6 @@
       </select>
     </div>
 
-    <!-- Avatar URL Input -->
-    <div class="form-group">
-      <label for="avatarUrl">Avatar URL</label>
-      <input
-        type="url"
-        id="avatarUrl"
-        name="avatarUrl"
-        class="form-control"
-        [(ngModel)]="formModel.avatarUrl"
-        required
-      />
-    </div>
-
     <!-- Submit Button -->
     <button type="submit" class="btn btn-primary" [disabled]="form.invalid">
       Submit
