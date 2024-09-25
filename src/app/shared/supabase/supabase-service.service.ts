@@ -83,5 +83,13 @@ export class SupabaseService {
   }
 
   // Manage Workers
-  async uploadWorker() {}
+  async uploadToDB(table: string, payload: {}) {
+    const { data, error } = await this.supabase
+      .from(table)
+      .insert([payload])
+      .select();
+    if (error) {
+      console.log(error);
+    } else console.log("upload complete");
+  }
 }
