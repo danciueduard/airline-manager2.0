@@ -4,8 +4,8 @@ import { MapComponent } from "./content/map/map.component";
 import { HeaderComponent } from "./header/header.component";
 import { FooterComponent } from "./footer/footer.component";
 import { SupabaseService } from "./shared/supabase/supabase-service.service";
-import { AdminToolsComponent } from "./admin-tools/admin-tools.component";
 import { popup } from "leaflet";
+import { AdminToolsComponent } from "./content/admin-tools/admin-tools.component";
 
 @Component({
   selector: "app-root",
@@ -29,7 +29,7 @@ export class AppComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.router.navigate([{ outlets: { popup: "admin/manage-workers" } }]);
+    // this.router.navigate([{ outlets: { popup: "admin/manage-planes" } }]);
     // this.supabaseService.getAirportByICAO("LROP");
     this.supabaseService.getPublicImgUrl("img", "planeImg/a320.jpg");
   }

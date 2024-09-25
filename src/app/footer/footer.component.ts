@@ -19,7 +19,7 @@ import { CommonModule } from "@angular/common";
   styleUrl: "./footer.component.css",
 })
 export class FooterComponent {
-  menuOpen: boolean = true; // TRUE FOR TESTING PURPOSES
+  menuOpen: boolean = false; // TRUE FOR TESTING PURPOSES
   activeTab: string;
 
   constructor(private router: Router) {}
@@ -35,5 +35,3 @@ export class FooterComponent {
     this.router.navigate(["/"]);
   }
 }
-
-// The equivalent IsActiveMatchOptions for true is {paths: 'exact', queryParams: 'exact', fragment: 'ignored', matrixParams: 'ignored'}.

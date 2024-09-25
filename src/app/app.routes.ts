@@ -5,10 +5,11 @@ import { StaffComponent } from "./footer/menu/staff/staff.component";
 import { ServicesMenuComponent } from "./footer/menu/services-menu/services-menu.component";
 import { FuelComponent } from "./footer/menu/services-menu/fuel/fuel.component";
 import { MaintenanceComponent } from "./footer/menu/services-menu/maintenance/maintenance.component";
-import { AdminToolsComponent } from "./admin-tools/admin-tools.component";
+
 import { AppComponent } from "./app.component";
-import { ManagePlanesComponent } from "./admin-tools/manage-planes/manage-planes.component";
-import { ManageWorkersComponent } from "./admin-tools/manage-workers/manage-workers.component";
+import { AdminToolsComponent } from "./content/admin-tools/admin-tools.component";
+import { ManagePlanesComponent } from "./content/admin-tools/manage-planes/manage-planes.component";
+import { ManageWorkersComponent } from "./content/admin-tools/manage-workers/manage-workers.component";
 
 export const routes: Routes = [
   { path: "", component: AppComponent },

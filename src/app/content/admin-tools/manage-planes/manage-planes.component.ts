@@ -1,6 +1,7 @@
 import { Component, PLATFORM_INITIALIZER } from "@angular/core";
 import { FormsModule } from "@angular/forms";
-import { SupabaseService } from "../../shared/supabase/supabase-service.service";
+import { SupabaseService } from "../../../shared/supabase/supabase-service.service";
+import { UploadPlanesModel } from "../../../shared/supabase/supabase-models/UploadPlanes.model";
 
 @Component({
   selector: "app-add-planes",
@@ -21,9 +22,9 @@ export class ManagePlanesComponent {
     }
   }
 
-  formModel = {
+  formModel: UploadPlanesModel = {
     name: "",
-    // planeImg is handled by uploadImage() function
+    planeImg: "",
     capacity: 0,
     range: 0,
     cost: 0,
@@ -38,10 +39,9 @@ export class ManagePlanesComponent {
   // Handle form submission AFTER the image has been uploaded
   async onSubmit() {
     await this.uploadImage();
-
-    if (!this.publicImgUrl) return console.error("no publicUrl found");
-
-    this.supabaseService.uploadPlane(this.formModel, this.publicImgUrl);
+    this.formModel.planeImg = this.publicImgUrl;
+    if (!this.formModel.planeImg) return console.error("no publicUrl found");
+    this.supabaseService.uploadToDB("planes", this.formModel);
   }
 
   // Handle image submission

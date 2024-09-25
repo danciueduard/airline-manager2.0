@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FormsModule } from "@angular/forms";
-import { SupabaseService } from "../../shared/supabase/supabase-service.service";
-import { UploadWorkersModel } from "../../shared/supabase/supabase-models/UploadWorkers.model";
+import { UploadWorkersModel } from "../../../shared/supabase/supabase-models/UploadWorkers.model";
+import { SupabaseService } from "../../../shared/supabase/supabase-service.service";
 
 @Component({
   selector: "app-manage-workers",
