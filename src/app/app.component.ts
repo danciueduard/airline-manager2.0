@@ -29,8 +29,10 @@ export class AppComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // this.router.navigate([{ outlets: { popup: "admin/manage-planes" } }]);
+    const newLocal = this;
+    // this.router.navigate([{ outlets: { popup: "shop" } }]);
+    // this.router.navigate(["admin"]);
     // this.supabaseService.getAirportByICAO("LROP");
-    this.supabaseService.getPublicImgUrl("img", "planeImg/a320.jpg");
+    newLocal.supabaseService.getPublicImgUrl("img", "planeImg/a320.jpg");
   }
 }

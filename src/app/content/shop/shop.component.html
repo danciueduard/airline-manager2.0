@@ -1,0 +1,58 @@
+<app-popup-menu>
+  <div class="container mt-4">
+    <h2>Shop Menu</h2>
+    <div class="mb-3">
+      <h4>Your Balance: ${{ balance }}</h4>
+      <h5>Airplanes Owned: {{ ownedAirplanes }}</h5>
+      <h5>Workers Hired: {{ hiredWorkers }}</h5>
+    </div>
+
+    <!-- Airplanes Section -->
+    <div class="card mb-4">
+      <div class="card-header">
+        <h4>Airplanes for Sale</h4>
+      </div>
+      <div class="card-body">
+        <div
+          *ngFor="let airplane of airplanes"
+          class="d-flex justify-content-between mb-2"
+        >
+          <div>
+            <strong>{{ airplane.name }}</strong> - ${{ airplane.price }}
+          </div>
+          <button
+            class="btn btn-success"
+            (click)="buyAirplane(airplane)"
+            [disabled]="balance < airplane.price"
+          >
+            Buy
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Workers Section -->
+    <div class="card mb-4">
+      <div class="card-header">
+        <h4>Workers for Hire</h4>
+      </div>
+      <div class="card-body">
+        <div
+          *ngFor="let worker of workers"
+          class="d-flex justify-content-between mb-2"
+        >
+          <div>
+            <strong>{{ worker.name }}</strong> - ${{ worker.salary }}
+          </div>
+          <button
+            class="btn btn-primary"
+            (click)="hireWorker(worker)"
+            [disabled]="balance < worker.salary"
+          >
+            Hire
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</app-popup-menu>
