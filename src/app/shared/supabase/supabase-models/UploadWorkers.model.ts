@@ -1,4 +1,4 @@
-export class UploadWorkersModel {
+export class WorkerModel {
   role: string;
   name: string;
   gender: string;

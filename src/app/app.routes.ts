@@ -11,6 +11,7 @@ import { AdminToolsComponent } from "./content/admin-tools/admin-tools.component
 import { ManagePlanesComponent } from "./content/admin-tools/manage-planes/manage-planes.component";
 import { ManageWorkersComponent } from "./content/admin-tools/manage-workers/manage-workers.component";
 import { ShopComponent } from "./content/shop/shop.component";
+import { AirplaneShopComponent } from "./content/shop/airplane-shop/airplane-shop.component";
 
 export const routes: Routes = [
   { path: "", component: AppComponent },
@@ -28,7 +29,7 @@ export const routes: Routes = [
   {
     path: "admin",
     component: AdminToolsComponent,
-    // outlet: "popup",
+    outlet: "popup",
     children: [
       {
         path: "manage-planes",
@@ -40,5 +41,15 @@ export const routes: Routes = [
       },
     ],
   },
-  { path: "shop", component: ShopComponent },
+  {
+    path: "shop",
+    component: ShopComponent,
+    outlet: "popup",
+    children: [
+      {
+        path: "airplanes",
+        component: AirplaneShopComponent,
+      },
+    ],
+  },
 ];

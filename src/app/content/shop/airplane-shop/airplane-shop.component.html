@@ -1,0 +1,53 @@
+<div class="d-flex gap-3 items-container p-4">
+  <div *ngFor="let plane of planes">
+    <div class="shadow p-3 rounded-3 overflow-hidden">
+      <img
+        [src]="plane.planeImg"
+        alt=""
+        width="auto"
+        height="130px"
+        style="transform: scale(1.2) translateY(-13%)"
+      />
+      <div class="d-flex flex-column gap-4">
+        <div class="d-flex flex-column gap-1 am-primary">
+          <h5 class="am-secondary">{{ plane.name }}</h5>
+          <p class="text-success">{{ plane.cost }}$</p>
+          <hr />
+          <p>
+            <span><i class="bi bi-people-fill"></i></span> Passengers:
+            {{ plane.capacity }}
+          </p>
+          <p>
+            <span><i class="bi bi-diagram-3-fill"></i></span> Crew capacity:
+            {{ plane.crew_capacity }}
+          </p>
+
+          <p>
+            <span><i class="bi bi-fuel-pump-fill"></i></span> Max fuel:
+            {{ plane.fuel_capacity }} l
+          </p>
+          <p>
+            <span><i class="bi bi-percent"></i></span> Avg fuel usage:
+            {{
+              averageFuelCalculator(
+                plane.min_fuel_consumption,
+                plane.max_fuel_consumption
+              )
+            }}
+            l/h
+          </p>
+          <p>
+            <span><i class="bi bi-speedometer"></i></span> Normal speed:
+            {{ plane.normal_speed }} kts
+          </p>
+          <p>
+            <span><i class="bi bi-speedometer"></i></span> Max speed:
+            {{ plane.max_speed }} kts
+          </p>
+        </div>
+
+        <button class="btn border border-success text-success">BUY</button>
+      </div>
+    </div>
+  </div>
+</div>

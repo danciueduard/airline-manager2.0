@@ -1,7 +1,7 @@
 import { Component, PLATFORM_INITIALIZER } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { SupabaseService } from "../../../shared/supabase/supabase-service.service";
-import { UploadPlanesModel } from "../../../shared/supabase/supabase-models/UploadPlanes.model";
+import { PlaneModel } from "../../../shared/supabase/supabase-models/UploadPlanes.model";
 
 @Component({
   selector: "app-add-planes",
@@ -22,7 +22,7 @@ export class ManagePlanesComponent {
     }
   }
 
-  formModel: UploadPlanesModel = {
+  formModel: PlaneModel = {
     name: "",
     planeImg: "",
     capacity: 0,

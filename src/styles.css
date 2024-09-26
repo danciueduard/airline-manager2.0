@@ -75,3 +75,11 @@ h5 {
 .gap-10 {
   gap: 10rem;
 }
+
+.am-border-primary {
+  border-color: var(--am-primary) !important;
+}
+
+.am-border-secondary {
+  border-color: var(--am-secondary) !important;
+}

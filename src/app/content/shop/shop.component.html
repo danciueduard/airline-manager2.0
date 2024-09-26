@@ -1,58 +1,83 @@
 <app-popup-menu>
-  <div class="container mt-4">
-    <h2>Shop Menu</h2>
-    <div class="mb-3">
-      <h4>Your Balance: ${{ balance }}</h4>
-      <h5>Airplanes Owned: {{ ownedAirplanes }}</h5>
-      <h5>Workers Hired: {{ hiredWorkers }}</h5>
+  <div class="d-flex justify-content-start mb-5">
+    <h1>STORE</h1>
+  </div>
+  <div class="container d-flex gap-3 px-5 py-3">
+    <div class="d-flex flex-column gap-4" style="width: 200px">
+      <button
+        routerLinkActive="am-bg-secondary"
+        routerLink="airplanes"
+        class="btn border border-1 am-bg-primary text-white"
+      >
+        <img
+          src="../../../assets/img/shop-menu/plane-menu-img.jpg"
+          alt="image of a plane"
+          height="50px"
+          class="rounded-5 position-absolute border border-4 am-border-secondary"
+          style="transform: translate(-210%, -27%)"
+        />
+        <p>Airplanes</p>
+      </button>
+      <div
+        routerLinkActive="am-bg-secondary"
+        routerLink="pilots"
+        class="btn border border-1 am-bg-primary text-white"
+      >
+        <img
+          src="../../../assets/img/shop-menu/pilot-shop-image.jpg"
+          alt="image of a plane"
+          height="50px"
+          class="rounded-5 position-absolute border border-4 am-border-secondary"
+          style="transform: translate(-210%, -27%)"
+        />
+        <p>Pilots</p>
+      </div>
+      <div
+        routerLinkActive="am-bg-secondary"
+        routerLink="cabin-crew"
+        class="btn border border-1 am-bg-primary text-white"
+      >
+        <img
+          src="../../../assets/img/shop-menu/cabin-crew-shop-img.jpg"
+          alt="image of a plane"
+          height="50px"
+          class="rounded-5 position-absolute border border-4 am-border-secondary"
+          style="transform: translate(-210%, -27%)"
+        />
+        <p>Cabin Crew</p>
+      </div>
+      <div
+        routerLinkActive="am-bg-secondary"
+        routerLink="engineers"
+        class="btn border border-1 am-bg-primary text-white"
+      >
+        <img
+          src="../../../assets/img/shop-menu/engineer-shop-image.jpg"
+          alt="image of a plane"
+          height="50px"
+          class="rounded-5 position-absolute border border-4 am-border-secondary"
+          style="transform: translate(-210%, -27%)"
+        />
+        <p>Engineers</p>
+      </div>
+      <div
+        routerLinkActive="am-bg-secondary"
+        routerLink="airports"
+        class="btn border border-1 am-bg-primary text-white"
+      >
+        <img
+          src="../../../assets/img/shop-menu/airport-shop-image.jpg"
+          alt="image of a plane"
+          height="50px"
+          class="rounded-5 position-absolute border border-4 am-border-secondary"
+          style="transform: translate(-210%, -27%)"
+        />
+        <p>Airports</p>
+      </div>
     </div>
-
-    <!-- Airplanes Section -->
-    <div class="card mb-4">
-      <div class="card-header">
-        <h4>Airplanes for Sale</h4>
-      </div>
-      <div class="card-body">
-        <div
-          *ngFor="let airplane of airplanes"
-          class="d-flex justify-content-between mb-2"
-        >
-          <div>
-            <strong>{{ airplane.name }}</strong> - ${{ airplane.price }}
-          </div>
-          <button
-            class="btn btn-success"
-            (click)="buyAirplane(airplane)"
-            [disabled]="balance < airplane.price"
-          >
-            Buy
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Workers Section -->
-    <div class="card mb-4">
-      <div class="card-header">
-        <h4>Workers for Hire</h4>
-      </div>
-      <div class="card-body">
-        <div
-          *ngFor="let worker of workers"
-          class="d-flex justify-content-between mb-2"
-        >
-          <div>
-            <strong>{{ worker.name }}</strong> - ${{ worker.salary }}
-          </div>
-          <button
-            class="btn btn-primary"
-            (click)="hireWorker(worker)"
-            [disabled]="balance < worker.salary"
-          >
-            Hire
-          </button>
-        </div>
-      </div>
+    <div class="vr"></div>
+    <div style="width: 600px">
+      <router-outlet></router-outlet>
     </div>
   </div>
 </app-popup-menu>

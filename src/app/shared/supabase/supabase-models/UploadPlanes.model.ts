@@ -1,13 +1,15 @@
-export class UploadPlanesModel {
-  name: string;
-  planeImg: string;
+export class PlaneModel {
   capacity: number;
-  range: number;
   cost: number;
-  max_speed: number;
-  normal_speed: number;
+  created_at?: string;
   crew_capacity: number;
   fuel_capacity: number;
-  min_fuel_consumption: number;
+  id?: number;
   max_fuel_consumption: number;
+  max_speed: number;
+  min_fuel_consumption: number;
+  name: string;
+  normal_speed: number;
+  planeImg: string;
+  range: number;
 }

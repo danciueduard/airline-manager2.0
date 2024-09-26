@@ -1,7 +1,6 @@
 <header
   class="d-flex justify-content-between align-items-center px-4 am-bg-primary fixed-top shadow-lg"
 >
-  <!-- <p class="am-secondary"><i class="bi bi-list h3"></i></p> -->
   <a class="">
     <img
       src="../../assets/img/logo1.png"
@@ -11,7 +10,13 @@
     />
   </a>
   <div class="d-flex gap-4">
-    <div class="am-secondary"><i class="bi bi-cart h4"></i></div>
+    <a
+      (click)="openPopupMenu($event)"
+      [routerLink]="[{ outlets: { popup: ['shop'] } }]"
+      class="am-secondary"
+    >
+      <i class="bi bi-cart h4" routerLinkActive="text-white"></i>
+    </a>
     <div class="am-secondary"><i class="bi bi-globe-americas h4"></i></div>
     <div class="am-secondary"><i class="bi bi-person-circle h4"></i></div>
   </div>

@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FormsModule } from "@angular/forms";
-import { UploadWorkersModel } from "../../../shared/supabase/supabase-models/UploadWorkers.model";
 import { SupabaseService } from "../../../shared/supabase/supabase-service.service";
+import { WorkerModel } from "../../../shared/supabase/supabase-models/UploadWorkers.model";
 
 @Component({
   selector: "app-manage-workers",
@@ -11,7 +11,7 @@ import { SupabaseService } from "../../../shared/supabase/supabase-service.servi
   styleUrl: "./manage-workers.component.css",
 })
 export class ManageWorkersComponent {
-  formModel: UploadWorkersModel = {
+  formModel: WorkerModel = {
     role: "",
     name: "",
     hours_experience: 0,

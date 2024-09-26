@@ -1,9 +1,9 @@
 import { Injectable } from "@angular/core";
 import { createClient, SupabaseClient } from "@supabase/supabase-js";
 import { environment } from "../../../environments/environment.prod";
-import { max } from "rxjs";
-
-import { UploadPlanesModel } from "./supabase-models/UploadPlanes.model";
+import { BehaviorSubject, Observable, from } from "rxjs";
+import { AddPlanesModel } from "../../content/admin-tools/manage-planes/AddPlanes.model";
+import { PlaneModel } from "./supabase-models/UploadPlanes.model";
 
 @Injectable({
   providedIn: "root",
@@ -13,14 +13,25 @@ export class SupabaseService {
     environment.supabaseUrl,
     environment.supabaseAnonKey
   );
+  // I have used a BehaviorSubject to avoid useless re-fetching when accessing the store tabs
+  private planesStoreSubject = new BehaviorSubject<PlaneModel[] | null>(null);
+  public planes$ = this.planesStoreSubject.asObservable();
 
-  async getAirportByICAO(icao) {
-    let { data, error } = await this.supabase
-      .from("airports")
-      .select("*")
-      .eq("icao", icao);
+  getFromSupabase(table: string, columns: string): Observable<any> {
+    const data = this.supabase.from(table).select(columns);
+    return from(data);
+  }
 
-    return console.log(data);
+  getPlanes(): Observable<PlaneModel[]> {
+    const currentData = this.planesStoreSubject.getValue();
+
+    if (currentData === null) {
+      const query = this.supabase.from("planes").select("*");
+      from(query).subscribe((res) => {
+        this.planesStoreSubject.next(res as unknown as PlaneModel[]);
+      });
+    }
+    return this.planes$;
   }
 
   //////////////////////////////////////////////////////////////////////////////
@@ -56,5 +67,14 @@ export class SupabaseService {
     if (error) {
       console.log(error);
     } else console.log("upload complete");
+  }
+  /////////////////////////////////////////////////////////////////////////////////
+  async getAirportByICAO(icao) {
+    let { data, error } = await this.supabase
+      .from("airports")
+      .select("*")
+      .eq("icao", icao);
+
+    return console.log(data);
   }
 }
