@@ -1,9 +1,10 @@
 import { Component, OnInit } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { SupabaseService } from "../../../shared/supabase/supabase-service.service";
 import { PlaneModel } from "../../../shared/supabase/supabase-models/UploadPlanes.model";
 import { catchError, map } from "rxjs/operators";
 import { Observable, of } from "rxjs";
+import { SupabaseService } from "../../../shared/supabase/supabase-services/supabase-client.service";
+import { SupabaseStoreService } from "../../../shared/supabase/supabase-services/supabase-store-service.service";
 
 @Component({
   selector: "app-airplane-shop",
@@ -13,18 +14,18 @@ import { Observable, of } from "rxjs";
   styleUrl: "./airplane-shop.component.css",
 })
 export class AirplaneShopComponent implements OnInit {
-  planes: any = [];
+  planes: any | null = [];
   error: string;
   loading: boolean;
 
-  constructor(private supabaseService: SupabaseService) {}
+  constructor(private supabaseStoreService: SupabaseStoreService) {}
 
   averageFuelCalculator(min: number, max: number) {
     return (min + max) / 2;
   }
 
   ngOnInit(): void {
-    this.supabaseService
+    this.supabaseStoreService
       .getPlanes()
       .pipe(
         map((res: PlaneModel[]) => res),

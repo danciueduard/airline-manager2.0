@@ -15,7 +15,7 @@ export class PopupMenuComponent {
   handleClickOutside(event: Event) {
     const clickInside = this.elementRef.nativeElement.contains(event.target);
     if (!clickInside) {
-      this.closeMenu();
+      // this.closeMenu();
     }
   }
   closeMenu() {

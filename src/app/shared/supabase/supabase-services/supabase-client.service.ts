@@ -1,37 +1,24 @@
 import { Injectable } from "@angular/core";
 import { createClient, SupabaseClient } from "@supabase/supabase-js";
-import { environment } from "../../../environments/environment.prod";
 import { BehaviorSubject, Observable, from } from "rxjs";
-import { AddPlanesModel } from "../../content/admin-tools/manage-planes/AddPlanes.model";
-import { PlaneModel } from "./supabase-models/UploadPlanes.model";
+import { PlaneModel } from "../supabase-models/UploadPlanes.model";
+import { environment } from "../../../../environments/environment.prod";
 
 @Injectable({
   providedIn: "root",
 })
 export class SupabaseService {
+  from(arg0: string) {
+    throw new Error("Method not implemented.");
+  }
   supabase: SupabaseClient = createClient(
     environment.supabaseUrl,
     environment.supabaseAnonKey
   );
-  // I have used a BehaviorSubject to avoid useless re-fetching when accessing the store tabs
-  private planesStoreSubject = new BehaviorSubject<PlaneModel[] | null>(null);
-  public planes$ = this.planesStoreSubject.asObservable();
 
   getFromSupabase(table: string, columns: string): Observable<any> {
     const data = this.supabase.from(table).select(columns);
     return from(data);
-  }
-
-  getPlanes(): Observable<PlaneModel[]> {
-    const currentData = this.planesStoreSubject.getValue();
-
-    if (currentData === null) {
-      const query = this.supabase.from("planes").select("*");
-      from(query).subscribe((res) => {
-        this.planesStoreSubject.next(res as unknown as PlaneModel[]);
-      });
-    }
-    return this.planes$;
   }
 
   //////////////////////////////////////////////////////////////////////////////

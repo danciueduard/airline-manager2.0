@@ -1,5 +1,5 @@
 <div class="d-flex gap-3 items-container p-4">
-  <div *ngFor="let plane of planes">
+  <div *ngFor="let plane of planes" class="item">
     <div class="shadow p-3 rounded-3 overflow-hidden">
       <img
         [src]="plane.planeImg"
@@ -11,7 +11,9 @@
       <div class="d-flex flex-column gap-4">
         <div class="d-flex flex-column gap-1 am-primary">
           <h5 class="am-secondary">{{ plane.name }}</h5>
-          <p class="text-success">{{ plane.cost }}$</p>
+          <p class="text-success">
+            {{ plane.cost | currency : "USD" : "symbol" : "1.0-0" }}
+          </p>
           <hr />
           <p>
             <span><i class="bi bi-people-fill"></i></span> Passengers:

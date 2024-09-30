@@ -1,0 +1,25 @@
+.slide-menu {
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.63);
+  height: 100vh;
+  width: 19rem;
+  right: 0;
+  top: 0;
+  z-index: 1000;
+  transition: 500ms;
+}
+
+.slide-menu a {
+  text-decoration: none;
+  font-weight: bold;
+  font-size: larger;
+  color: var(--am-primary);
+}
+
+.closed {
+  transform: translateX(100%);
+}
+
+.slide-menu a:hover {
+  color: var(--am-secondary);
+}

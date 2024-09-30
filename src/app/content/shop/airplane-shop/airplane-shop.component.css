@@ -6,6 +6,11 @@ i {
   color: var(--am-secondary);
 }
 
+.item:hover {
+  transform: scale(1.05);
+  transition: 300ms;
+}
+
 .items-container {
   overflow: auto;
 }

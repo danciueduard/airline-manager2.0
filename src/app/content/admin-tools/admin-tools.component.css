@@ -9,3 +9,7 @@
   width: 50%;
   z-index: 9999;
 }
+
+div {
+  white-space: nowrap;
+}

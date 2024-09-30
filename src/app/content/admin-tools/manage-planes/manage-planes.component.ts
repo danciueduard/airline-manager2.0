@@ -1,7 +1,7 @@
 import { Component, PLATFORM_INITIALIZER } from "@angular/core";
 import { FormsModule } from "@angular/forms";
-import { SupabaseService } from "../../../shared/supabase/supabase-service.service";
 import { PlaneModel } from "../../../shared/supabase/supabase-models/UploadPlanes.model";
+import { SupabaseService } from "../../../shared/supabase/supabase-services/supabase-client.service";
 
 @Component({
   selector: "app-add-planes",
@@ -48,7 +48,7 @@ export class ManagePlanesComponent {
   uploadImage() {
     this.supabaseService.uploadImg(this.selectedFile);
     const planeURL = this.supabaseService.getPublicImgUrl(
-      "img",
+      "img/planeImg",
       this.selectedFile.name
     );
     planeURL.then((value) => {

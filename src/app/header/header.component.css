@@ -1,3 +1,7 @@
 header {
   height: 4rem;
 }
+
+a {
+  cursor: pointer;
+}

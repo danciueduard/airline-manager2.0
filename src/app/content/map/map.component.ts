@@ -13,6 +13,7 @@ import {
 import "leaflet/dist/images/marker-shadow.png";
 import "leaflet/dist/images/marker-icon.png";
 import { StorageContainerService } from "../../shared/storage-container.service";
+import { SlideMenuComponent } from "../../header/slide-menu/slide-menu.component";
 
 @Component({
   selector: "app-map",
