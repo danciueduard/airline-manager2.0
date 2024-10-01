@@ -12,6 +12,7 @@ import { ManagePlanesComponent } from "./content/admin-tools/manage-planes/manag
 import { ManageWorkersComponent } from "./content/admin-tools/manage-workers/manage-workers.component";
 import { ShopComponent } from "./content/shop/shop.component";
 import { AirplaneShopComponent } from "./content/shop/airplane-shop/airplane-shop.component";
+import { CrewShopComponent } from "./content/shop/crew-shop/crew-shop.component";
 
 export const routes: Routes = [
   { path: "", component: AppComponent },
@@ -49,6 +50,10 @@ export const routes: Routes = [
       {
         path: "airplanes",
         component: AirplaneShopComponent,
+      },
+      {
+        path: "pilots",
+        component: CrewShopComponent,
       },
     ],
   },

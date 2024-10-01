@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { BehaviorSubject, Observable, from } from "rxjs";
 import { PlaneModel } from "../supabase-models/UploadPlanes.model";
 import { SupabaseService } from "./supabase-client.service";
+import { CrewModel } from "../../../content/shop/crew-shop/crew-card/Crew.model";
 
 @Injectable({
   providedIn: "root",
@@ -26,7 +27,7 @@ export class SupabaseStoreService {
     return this.planes$;
   }
 
-  getCrew(): Observable<any> {
+  getCrew(): Observable<CrewModel[]> {
     const currentData = this.crewStoreSubject.getValue();
     if (currentData === null) {
       const data = this.supabaseClientService.getFromSupabase("workers", "*");

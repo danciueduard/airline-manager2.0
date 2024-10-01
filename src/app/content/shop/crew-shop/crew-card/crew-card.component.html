@@ -1,0 +1,14 @@
+<div class="card" style="width: 10rem">
+  <div
+    class="card-body d-flex flex-column justify-content-center align-items-center"
+  >
+    <img [src]="data.avatarUrl" alt="" height="64px " width="64px" />
+    <h5>{{ data.name }}</h5>
+    <p class="text-success">Role: {{ data.role }}</p>
+    <div class="">
+      <p>Age: 31</p>
+      <p>Exp: {{ data.hours_experience }}</p>
+      <p>Salary: {{ 99999 | currency : "USD" : "symbol" : "1.0-0" }}</p>
+    </div>
+  </div>
+</div>

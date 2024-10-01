@@ -17,6 +17,7 @@ export class ManageWorkersComponent {
     hours_experience: 0,
     gender: "",
     avatarUrl: "",
+    age: 1,
   };
 
   constructor(private supabaseService: SupabaseService) {}

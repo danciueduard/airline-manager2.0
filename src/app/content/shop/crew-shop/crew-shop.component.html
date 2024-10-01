@@ -1,1 +1,5 @@
-<p>crew-shop works!</p>
+<div class="row row-cols-1 row-cols-md-3 g-4">
+  <div *ngFor="let crewMember of crew">
+    <app-crew-card [data]="crewMember"></app-crew-card>
+  </div>
+</div>

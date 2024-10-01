@@ -1,9 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { PlaneModel } from "../../../shared/supabase/supabase-models/UploadPlanes.model";
-import { catchError, map } from "rxjs/operators";
-import { Observable, of } from "rxjs";
-import { SupabaseService } from "../../../shared/supabase/supabase-services/supabase-client.service";
 import { SupabaseStoreService } from "../../../shared/supabase/supabase-services/supabase-store-service.service";
 
 @Component({
@@ -11,33 +8,41 @@ import { SupabaseStoreService } from "../../../shared/supabase/supabase-services
   standalone: true,
   imports: [CommonModule],
   templateUrl: "./airplane-shop.component.html",
-  styleUrl: "./airplane-shop.component.css",
+  styleUrls: ["./airplane-shop.component.css"], // Corrected to 'styleUrls' (plural)
 })
 export class AirplaneShopComponent implements OnInit {
-  planes: any | null = [];
-  error: string;
-  loading: boolean;
+  planes: PlaneModel[] | null = []; // Initialized as an empty array or null
+  error: string = ""; // Error message handling
+  loading: boolean = true; // Loading initialized to true
 
   constructor(private supabaseStoreService: SupabaseStoreService) {}
 
-  averageFuelCalculator(min: number, max: number) {
+  averageFuelCalculator(min: number, max: number): number {
     return (min + max) / 2;
   }
 
   ngOnInit(): void {
-    this.supabaseStoreService
-      .getPlanes()
-      .pipe(
-        map((res: PlaneModel[]) => res),
-        catchError((error) => {
-          this.error = "Failed to load planes";
-          console.error(error);
-          return of([]); //
-        })
-      )
-      .subscribe((res: any) => {
-        this.planes = res.data;
+    this.loadPlanes();
+  }
+
+  loadPlanes(): void {
+    this.supabaseStoreService.getPlanes().subscribe({
+      next: (res: any) => {
+        if (res && res.data) {
+          this.planes = res.data;
+        } else {
+          this.planes = [];
+        }
         this.loading = false;
-      });
+      },
+      error: (err) => {
+        this.error = "Failed to load planes";
+        console.error(err);
+        this.loading = false;
+      },
+      complete: () => {
+        this.loading = false;
+      },
+    });
   }
 }
