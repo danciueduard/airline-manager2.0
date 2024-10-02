@@ -34,5 +34,6 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     // this.router.navigate([{ outlets: { popup: "shop/airplanes" } }]);
+    console.log(Date.now());
   }
 }

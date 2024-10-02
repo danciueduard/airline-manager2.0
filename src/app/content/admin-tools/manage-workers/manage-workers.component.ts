@@ -4,6 +4,7 @@ import { WorkerModel } from "../../../shared/supabase/supabase-models/UploadWork
 import { SupabaseService } from "../../../shared/supabase/supabase-services/supabase-client.service";
 import { CommonModule } from "@angular/common";
 import { SupabaseAdminService } from "../../../shared/supabase/supabase-services/supabase-admin.service";
+import { Call } from "@angular/compiler";
 
 @Component({
   selector: "app-manage-workers",
@@ -19,12 +20,13 @@ export class ManageWorkersComponent implements OnInit {
   addedQualifications = [];
 
   formModel: WorkerModel = {
+    worker_id: null,
     role: "",
     name: "",
     hours_experience: 0,
     gender: "",
     avatarUrl: "",
-    age: 1,
+    age: null,
   };
 
   constructor(private supabaseService: SupabaseService) {}
@@ -33,18 +35,31 @@ export class ManageWorkersComponent implements OnInit {
     this.supabaseService.getFromSupabase("qualifications", "*").subscribe({
       next: (res) => {
         this.data = res.data;
-        console.log(res.data);
       },
       error: (error) => (this.error = error),
     });
   }
 
-  onSubmit() {
+  async onSubmit() {
+    const workerId = Date.now();
+    const qualifications = [];
     this.formModel.avatarUrl = this.avatarUrlCreator(
       this.formModel.role,
       this.formModel.gender
     );
-    this.supabaseService.uploadToDB("workers", this.formModel);
+    this.formModel.worker_id = workerId;
+    console.log(this.formModel);
+    for (let qualification of this.addedQualifications) {
+      qualifications.push({
+        worker_id: workerId,
+        qualification_id: qualification.id,
+      });
+    }
+
+    await this.supabaseService.uploadToDB("workers", [this.formModel]);
+    await this.supabaseService.uploadToDB("workers_qualifications", [
+      ...qualifications,
+    ]);
   }
 
   avatarUrlCreator(role: string, gender?: string) {
@@ -74,9 +89,15 @@ export class ManageWorkersComponent implements OnInit {
     if (category === "all") {
       return;
     }
-
     this.availableQualifications = this.availableQualifications.filter(
       (item) => item.category === category
     );
+    console.log(this.extractQualificationNames(this.availableQualifications));
+  }
+
+  extractQualificationNames(qualificationsArray) {
+    return qualificationsArray
+      .map((qualification) => qualification.qualification_name) // Extract qualification_name
+      .join(", "); // Join them into a string separated by commas
   }
 }

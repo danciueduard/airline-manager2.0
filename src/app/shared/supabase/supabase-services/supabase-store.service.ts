@@ -32,7 +32,7 @@ export class SupabaseStoreService {
     if (currentData === null) {
       const data = this.supabaseClientService.getFromSupabase(
         "workers",
-        `id,name,role,gender,avatarUrl,hours_experience,age,workers_qualifications (qualification_id,
+        `worker_id,name,role,gender,avatarUrl,hours_experience,age,workers_qualifications (qualification_id,
         qualifications (
             qualification_name,
             qualification_description,

@@ -55,6 +55,14 @@ export const routes: Routes = [
         path: "pilots",
         component: CrewShopComponent,
       },
+      {
+        path: "cabin-crew",
+        component: CrewShopComponent,
+      },
+      {
+        path: "engineers",
+        component: CrewShopComponent,
+      },
     ],
   },
 ];

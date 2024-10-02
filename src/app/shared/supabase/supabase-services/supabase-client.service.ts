@@ -49,7 +49,7 @@ export class SupabaseService {
   async uploadToDB(table: string, payload: {}) {
     const { data, error } = await this.supabase
       .from(table)
-      .insert([payload])
+      .insert(payload)
       .select();
     if (error) {
       console.log(error);

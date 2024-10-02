@@ -14,8 +14,9 @@ import { CrewModel } from "./crew-card/Crew.model";
 export class CrewShopComponent implements OnInit {
   crew: CrewModel[] | null = [];
   error: string = "";
-  planes: any;
   loading: boolean = true;
+  currentTab: string;
+  filteredCrew: CrewModel[] | null = [];
 
   constructor(private supabaseStoreService: SupabaseStoreService) {}
 

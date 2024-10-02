@@ -6,9 +6,14 @@
     <h5>{{ data.name }}</h5>
     <p class="text-success">Role: {{ data.role }}</p>
     <div class="">
-      <p>Age: 31</p>
+      <p>Age: {{ data.age }}</p>
       <p>Exp: {{ data.hours_experience }}</p>
       <p>Salary: {{ 99999 | currency : "USD" : "symbol" : "1.0-0" }}</p>
+      <div class="">
+        <p *ngFor="let qualification of data.workers_qualifications">
+          {{ qualification.qualifications.qualification_acronyms }}
+        </p>
+      </div>
     </div>
   </div>
 </div>

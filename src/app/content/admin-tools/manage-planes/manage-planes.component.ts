@@ -41,7 +41,7 @@ export class ManagePlanesComponent {
     await this.uploadImage();
     this.formModel.planeImg = this.publicImgUrl;
     if (!this.formModel.planeImg) return console.error("no publicUrl found");
-    this.supabaseService.uploadToDB("planes", this.formModel);
+    this.supabaseService.uploadToDB("planes", [this.formModel]);
   }
 
   // Handle image submission
