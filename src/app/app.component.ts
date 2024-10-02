@@ -7,6 +7,7 @@ import { popup } from "leaflet";
 import { AdminToolsComponent } from "./content/admin-tools/admin-tools.component";
 import { SupabaseService } from "./shared/supabase/supabase-services/supabase-client.service";
 import { SlideMenuComponent } from "./header/slide-menu/slide-menu.component";
+import { SupabaseAdminService } from "./shared/supabase/supabase-services/supabase-admin.service";
 
 @Component({
   selector: "app-root",
@@ -27,15 +28,11 @@ export class AppComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private supabaseService: SupabaseService
+    private supabaseService: SupabaseService,
+    private supabaseAdminService: SupabaseAdminService
   ) {}
 
   ngOnInit(): void {
-    const newLocal = this;
     // this.router.navigate([{ outlets: { popup: "shop/airplanes" } }]);
-    // this.router.navigate([{ outlets: { popup: "admin/manage-workers" } }]);
-    // this.router.navigate(["shop/airplanes"]);
-    // this.supabaseService.getAirportByICAO("LROP");
-    newLocal.supabaseService.getPublicImgUrl("img", "planeImg/a320.jpg");
   }
 }

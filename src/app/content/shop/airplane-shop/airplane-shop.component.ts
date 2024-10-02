@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { PlaneModel } from "../../../shared/supabase/supabase-models/UploadPlanes.model";
-import { SupabaseStoreService } from "../../../shared/supabase/supabase-services/supabase-store-service.service";
+import { SupabaseStoreService } from "../../../shared/supabase/supabase-services/supabase-store.service";
 
 @Component({
   selector: "app-airplane-shop",

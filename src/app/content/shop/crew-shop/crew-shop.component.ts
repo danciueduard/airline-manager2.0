@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { CrewCardComponent } from "./crew-card/crew-card.component";
-import { SupabaseStoreService } from "../../../shared/supabase/supabase-services/supabase-store-service.service";
+import { SupabaseStoreService } from "../../../shared/supabase/supabase-services/supabase-store.service";
 import { CommonModule } from "@angular/common";
 import { CrewModel } from "./crew-card/Crew.model";
 
@@ -32,6 +32,7 @@ export class CrewShopComponent implements OnInit {
           this.crew = [];
         }
         this.loading = false;
+        console.log(this.crew);
       },
       error: (err) => {
         this.error = "Failed to load crew members";

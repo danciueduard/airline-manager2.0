@@ -27,13 +27,22 @@ export class SupabaseStoreService {
     return this.planes$;
   }
 
-  getCrew(): Observable<CrewModel[]> {
-    const currentData = this.crewStoreSubject.getValue();
+  getCrew() {
+    const currentData = this.planesStoreSubject.getValue();
     if (currentData === null) {
-      const data = this.supabaseClientService.getFromSupabase("workers", "*");
-      from(data).subscribe((res) => {
-        this.crewStoreSubject.next(res);
-      });
+      const data = this.supabaseClientService.getFromSupabase(
+        "workers",
+        `id,name,role,gender,avatarUrl,hours_experience,age,workers_qualifications (qualification_id,
+        qualifications (
+            qualification_name,
+            qualification_description,
+            category,
+            qualification_acronyms
+            )
+        )
+           `
+      );
+      from(data).subscribe((res) => this.crewStoreSubject.next(res));
     }
     return this.crew$;
   }

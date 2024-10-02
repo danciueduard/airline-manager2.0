@@ -1,86 +1,131 @@
 <div class="container">
   <h2>Add worker</h2>
-  <form #form="ngForm" (ngSubmit)="onSubmit()">
-    <!-- Role Input -->
-    <div class="form-group">
-      <label for="gender">Role</label>
-      <select
-        id="role"
-        name="role"
-        class="form-control"
-        [(ngModel)]="formModel.role"
-        required
+  <form #form="ngForm" (ngSubmit)="onSubmit()" class="d-flex gap-5">
+    <div>
+      <!-- Role Input -->
+      <div class="form-group">
+        <label for="gender">Role</label>
+        <select
+          id="role"
+          name="role"
+          class="form-control"
+          [(ngModel)]="formModel.role"
+          (change)="setCategory(formModel.role)"
+          required
+        >
+          <option value="" disabled selected>Select your role</option>
+          <option value="pilot">Pilot</option>
+          <option value="cabin-crew">Cabin Crew</option>
+          <option value="engineer">Engineer</option>
+        </select>
+      </div>
+
+      <!-- Name Input -->
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          class="form-control"
+          [(ngModel)]="formModel.name"
+          required
+        />
+      </div>
+
+      <!-- Age Input -->
+      <div class="form-group">
+        <label for="age">Age</label>
+        <input
+          type="number"
+          id="age"
+          name="age"
+          class="form-control"
+          [(ngModel)]="formModel.age"
+          required
+        />
+      </div>
+
+      <!-- Hour Experience Input -->
+      <div class="form-group">
+        <label for="experience">Hours Experience</label>
+        <input
+          type="number"
+          id="experience"
+          name="experience"
+          class="form-control"
+          [(ngModel)]="formModel.hours_experience"
+          min="0"
+          required
+        />
+      </div>
+
+      <!-- Gender Input -->
+      <div class="form-group">
+        <label for="gender">Gender</label>
+        <select
+          id="gender"
+          name="gender"
+          class="form-control"
+          [(ngModel)]="formModel.gender"
+          required
+        >
+          <option value="" disabled selected>Select your gender</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select>
+      </div>
+
+      <!-- Submit Button -->
+      <button
+        type="submit"
+        class="btn btn-primary mt-3"
+        [disabled]="form.invalid"
       >
-        <option value="" disabled selected>Select your role</option>
-        <option value="pilot">Pilot</option>
-        <option value="cabin-crew">Cabin Crew</option>
-        <option value="engineer">Engineer</option>
-      </select>
+        Submit
+      </button>
     </div>
-
-    <!-- Name Input -->
-    <div class="form-group">
-      <label for="name">Name</label>
-      <input
-        type="text"
-        id="name"
-        name="name"
-        class="form-control"
-        [(ngModel)]="formModel.name"
-        required
-      />
+    <div>
+      <h3 class="mb-3">Qualifications</h3>
+      <h5>Available</h5>
+      <div class="d-flex flex-column gap-1">
+        <ul class="list-group overflow-auto" style="height: 10rem">
+          <li
+            *ngFor="let availableItem of availableQualifications"
+            (click)="addQualification(availableItem)"
+            class="list-group-item"
+          >
+            <div class="d-flex justify-content-between">
+              <p>
+                {{ availableItem.qualification_name }}
+              </p>
+              <p class="bg-danger text-white p-1" style="font-size: 11px">
+                {{ availableItem.qualification_acronyms }}
+              </p>
+            </div>
+          </li>
+        </ul>
+        <hr />
+        <h5>Added</h5>
+        <ul class="list-group overflow-auto" style="height: 10rem">
+          <li
+            *ngFor="let addedItem of addedQualifications"
+            (click)="removeQualification(addedItem)"
+            class="list-group-item"
+          >
+            <div>
+              <div class="d-flex justify-content-between">
+                <p>
+                  {{ addedItem.qualification_name }}
+                </p>
+                <p class="bg-danger text-white p-1" style="font-size: 11px">
+                  {{ addedItem.qualification_acronyms }}
+                </p>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
     </div>
-
-    <!-- Age Input -->
-    <div class="form-group">
-      <label for="age">Age</label>
-      <input
-        type="number"
-        id="age"
-        name="age"
-        class="form-control"
-        [(ngModel)]="formModel.age"
-        required
-      />
-    </div>
-
-    <!-- Hour Experience Input -->
-    <div class="form-group">
-      <label for="experience">Hours Experience</label>
-      <input
-        type="number"
-        id="experience"
-        name="experience"
-        class="form-control"
-        [(ngModel)]="formModel.hours_experience"
-        min="0"
-        required
-      />
-    </div>
-
-    <!-- Gender Input -->
-    <div class="form-group">
-      <label for="gender">Gender</label>
-      <select
-        id="gender"
-        name="gender"
-        class="form-control"
-        [(ngModel)]="formModel.gender"
-        required
-      >
-        <option value="" disabled selected>Select your gender</option>
-        <option value="male">Male</option>
-        <option value="female">Female</option>
-      </select>
-    </div>
-
-    <!-- Submit Button -->
-    <button
-      type="submit"
-      class="btn btn-primary mt-3"
-      [disabled]="form.invalid"
-    >
-      Submit
-    </button>
   </form>
 </div>
