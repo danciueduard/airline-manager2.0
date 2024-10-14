@@ -5,7 +5,7 @@ import {
   input,
   OnInit,
 } from "@angular/core";
-import { StaffItem } from "../../../../../shared/components/staff-item/staff-item.component";
+import { StaffItem } from "../../../staff/staff-item/staff-item.component";
 import { ProgressBarComponent } from "../../../../../shared/components/progress-bar/progress-bar.component";
 
 //////////////////////////////////////////////////////////////////////////////////////////////

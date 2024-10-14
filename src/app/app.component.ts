@@ -8,6 +8,7 @@ import { AdminToolsComponent } from "./content/admin-tools/admin-tools.component
 import { SupabaseService } from "./shared/supabase/supabase-services/supabase-client.service";
 import { SlideMenuComponent } from "./header/slide-menu/slide-menu.component";
 import { SupabaseAdminService } from "./shared/supabase/supabase-services/supabase-admin.service";
+import { PlayerRoutesService } from "./shared/supabase/supabase-services/supabase-player-routes.service";
 
 @Component({
   selector: "app-root",
@@ -29,11 +30,15 @@ export class AppComponent implements OnInit {
   constructor(
     private router: Router,
     private supabaseService: SupabaseService,
-    private supabaseAdminService: SupabaseAdminService
+    private supabaseAdminService: SupabaseAdminService,
+    private playerRoutesService: PlayerRoutesService
   ) {}
 
   ngOnInit(): void {
     // this.router.navigate([{ outlets: { popup: "shop/airplanes" } }]);
     console.log(Date.now());
+    this.playerRoutesService
+      .getPlayerRoutes()
+      .subscribe((res) => console.log(res));
   }
 }

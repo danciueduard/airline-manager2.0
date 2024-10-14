@@ -9,10 +9,21 @@
       <p>Age: {{ data.age }}</p>
       <p>Exp: {{ data.hours_experience }}</p>
       <p>Salary: {{ 99999 | currency : "USD" : "symbol" : "1.0-0" }}</p>
-      <div class="">
-        <p *ngFor="let qualification of data.workers_qualifications">
-          {{ qualification.qualifications.qualification_acronyms }}
-        </p>
+      <div class="container mt-2">
+        <div
+          class="row row-cols-4 row-gap-1 gap-1"
+          style="font-size: 0.5rem; cursor: default"
+        >
+          <p
+            class="bg-success text-white p-1 col-md-auto"
+            *ngFor="let qualification of data.workers_qualifications"
+            data-bs-toggle="tooltip"
+            data-bs-placement="bottom"
+            [title]="qualification.qualifications.qualification_description"
+          >
+            {{ qualification.qualifications.qualification_acronyms }}
+          </p>
+        </div>
       </div>
     </div>
   </div>

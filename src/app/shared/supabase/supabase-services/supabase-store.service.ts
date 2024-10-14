@@ -28,7 +28,7 @@ export class SupabaseStoreService {
   }
 
   getCrew() {
-    const currentData = this.planesStoreSubject.getValue();
+    const currentData = this.crewStoreSubject.getValue();
     if (currentData === null) {
       const data = this.supabaseClientService.getFromSupabase(
         "workers",

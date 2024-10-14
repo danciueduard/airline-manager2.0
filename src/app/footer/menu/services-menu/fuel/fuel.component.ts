@@ -1,6 +1,6 @@
 import { CommonModule } from "@angular/common";
 import { Component, ElementRef, Renderer2, ViewChild } from "@angular/core";
-import { StarRatingComponent } from "../../../../shared/components/star-rating/star-rating.component";
+import { StarRatingComponent } from "../../staff/star-rating/star-rating.component";
 
 @Component({
   selector: "app-fuel",

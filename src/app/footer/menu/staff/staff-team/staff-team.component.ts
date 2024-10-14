@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from "@angular/core";
-import { StaffItem } from "../../../../shared/components/staff-item/staff-item.component";
+import { StaffItem } from "../staff-item/staff-item.component";
 import { StaffTeamComposition } from "./StaffTeamComposition.model";
 import { CommonModule } from "@angular/common";
-import { StarRatingComponent } from "../../../../shared/components/star-rating/star-rating.component";
+import { StarRatingComponent } from "../star-rating/star-rating.component";
 
 //////////////////////////////////////////////////////////////////////////////////////////
 // const temporaryTeam = {

@@ -1,10 +1,8 @@
-import { Component, OnChanges, OnInit, SimpleChanges } from "@angular/core";
-import { FormsModule } from "@angular/forms";
+import { Component, OnInit, ViewChild } from "@angular/core";
+import { Form, FormsModule, NgForm } from "@angular/forms";
 import { WorkerModel } from "../../../shared/supabase/supabase-models/UploadWorkers.model";
 import { SupabaseService } from "../../../shared/supabase/supabase-services/supabase-client.service";
 import { CommonModule } from "@angular/common";
-import { SupabaseAdminService } from "../../../shared/supabase/supabase-services/supabase-admin.service";
-import { Call } from "@angular/compiler";
 
 @Component({
   selector: "app-manage-workers",
@@ -40,7 +38,7 @@ export class ManageWorkersComponent implements OnInit {
     });
   }
 
-  async onSubmit() {
+  async onSubmit(form: NgForm) {
     const workerId = Date.now();
     const qualifications = [];
     this.formModel.avatarUrl = this.avatarUrlCreator(
@@ -60,6 +58,8 @@ export class ManageWorkersComponent implements OnInit {
     await this.supabaseService.uploadToDB("workers_qualifications", [
       ...qualifications,
     ]);
+    form.reset();
+    this.setCategory("none");
   }
 
   avatarUrlCreator(role: string, gender?: string) {
@@ -86,8 +86,9 @@ export class ManageWorkersComponent implements OnInit {
   setCategory(category: string) {
     this.addedQualifications = [];
     this.availableQualifications = this.data.slice();
-    if (category === "all") {
-      return;
+    if (category === "none") {
+      this.availableQualifications = [];
+      this.addedQualifications = [];
     }
     this.availableQualifications = this.availableQualifications.filter(
       (item) => item.category === category
