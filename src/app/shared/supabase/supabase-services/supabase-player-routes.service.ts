@@ -36,9 +36,9 @@ export class PlayerRoutesService {
   }
 
   addMinutesToTimestamp(minutes: number) {
-    const currentTimestamp: number = Date.now(); // Get current timestamp in milliseconds
-    const millisecondsToAdd = minutes * 60 * 1000; // Convert minutes to milliseconds
-    const newTimestamp = currentTimestamp + millisecondsToAdd; // Add minutes to the current timestamp
+    const currentTimestamp: number = Date.now();
+    const millisecondsToAdd = minutes * 60 * 1000;
+    const newTimestamp = currentTimestamp + millisecondsToAdd;
     return newTimestamp;
   }
 }

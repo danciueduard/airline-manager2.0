@@ -5,3 +5,7 @@ li {
 li:hover {
   background-color: var(--am-lightblue);
 }
+
+i {
+  margin: 0;
+}

@@ -49,8 +49,8 @@ h5 {
   border: none !important;
 }
 
-.map-dark-mode {
-  filter: brightness(0.6) invert(1) contrast(2) hue-rotate(200deg) saturate(0.5)
+.map-dark-mode .leaflet-tile {
+  filter: brightness(0.7) invert(1) contrast(2) hue-rotate(200deg) saturate(0.7)
     brightness(0.7);
 }
 
@@ -82,4 +82,8 @@ h5 {
 
 .am-border-secondary {
   border-color: var(--am-secondary) !important;
+}
+
+.transition-300 {
+  transition: 300ms;
 }

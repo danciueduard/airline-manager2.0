@@ -12,8 +12,9 @@ import { CommonModule } from "@angular/common";
   styleUrl: "./manage-workers.component.css",
 })
 export class ManageWorkersComponent implements OnInit {
+  onSubmitMessage: string = "Upload Success!";
   error: string;
-  data = [];
+  data = [{}];
   availableQualifications = [];
   addedQualifications = [];
 
@@ -30,12 +31,7 @@ export class ManageWorkersComponent implements OnInit {
   constructor(private supabaseService: SupabaseService) {}
 
   ngOnInit(): void {
-    this.supabaseService.getFromSupabase("qualifications", "*").subscribe({
-      next: (res) => {
-        this.data = res.data;
-      },
-      error: (error) => (this.error = error),
-    });
+    this.getQualifications();
   }
 
   async onSubmit(form: NgForm) {
@@ -46,7 +42,7 @@ export class ManageWorkersComponent implements OnInit {
       this.formModel.gender
     );
     this.formModel.worker_id = workerId;
-    console.log(this.formModel);
+    // console.log(this.formModel);
     for (let qualification of this.addedQualifications) {
       qualifications.push({
         worker_id: workerId,
@@ -54,10 +50,16 @@ export class ManageWorkersComponent implements OnInit {
       });
     }
 
-    await this.supabaseService.uploadToDB("workers", [this.formModel]);
-    await this.supabaseService.uploadToDB("workers_qualifications", [
-      ...qualifications,
-    ]);
+    this.supabaseService.uploadToDB("workers", [this.formModel]).subscribe({
+      next: (res) => console.log(res),
+      error: (err) => console.log(err),
+    });
+    this.supabaseService
+      .uploadToDB("workers_qualifications", [...qualifications])
+      .subscribe({
+        next: (res) => console.log(res),
+        error: (err) => console.log(err),
+      });
     form.reset();
     this.setCategory("none");
   }
@@ -100,5 +102,12 @@ export class ManageWorkersComponent implements OnInit {
     return qualificationsArray
       .map((qualification) => qualification.qualification_name) // Extract qualification_name
       .join(", "); // Join them into a string separated by commas
+  }
+
+  getQualifications() {
+    this.supabaseService.getFromSupabase("qualifications", "*").subscribe({
+      next: (res) => (this.data = res.data),
+      error: (err) => console.log(err),
+    });
   }
 }

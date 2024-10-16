@@ -1,6 +1,14 @@
-<div class="d-flex gap-3 items-container p-4">
-  <div *ngFor="let plane of planes" class="item">
-    <div class="shadow p-3 rounded-3 overflow-hidden">
+<div class="d-flex gap-3 p-4">
+  <div *ngIf="isLoading" class="text-center">
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+  <div *ngIf="error" class="alert alert-danger" role="alert">
+    {{ error }}
+  </div>
+  <div *ngFor="let plane of planes">
+    <div class="shadow p-3 rounded-3 overflow-hidden item transition-300">
       <img
         [src]="plane.planeImg"
         alt=""

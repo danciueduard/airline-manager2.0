@@ -1,7 +1,8 @@
-import { Component, PLATFORM_INITIALIZER } from "@angular/core";
+import { Component, OnDestroy, PLATFORM_INITIALIZER } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { PlaneModel } from "../../../shared/supabase/supabase-models/UploadPlanes.model";
 import { SupabaseService } from "../../../shared/supabase/supabase-services/supabase-client.service";
+import { Subscription } from "rxjs";
 
 @Component({
   selector: "app-add-planes",
@@ -11,6 +12,7 @@ import { SupabaseService } from "../../../shared/supabase/supabase-services/supa
   styleUrl: "./manage-planes.component.css",
 })
 export class ManagePlanesComponent {
+  managePlanesSubscription: Subscription;
   selectedFile: File | null = null;
   publicImgUrl: string | null = null;
   constructor(private supabaseService: SupabaseService) {}
@@ -51,8 +53,11 @@ export class ManagePlanesComponent {
       "img/planeImg",
       this.selectedFile.name
     );
-    planeURL.then((value) => {
-      this.publicImgUrl = value;
+
+    this.managePlanesSubscription = planeURL.subscribe({
+      next: (res) => console.log(res),
+      error: (err) => console.log(err),
     });
+    this.managePlanesSubscription.unsubscribe();
   }
 }

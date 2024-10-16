@@ -7,8 +7,8 @@ import { popup } from "leaflet";
 import { AdminToolsComponent } from "./content/admin-tools/admin-tools.component";
 import { SupabaseService } from "./shared/supabase/supabase-services/supabase-client.service";
 import { SlideMenuComponent } from "./header/slide-menu/slide-menu.component";
-import { SupabaseAdminService } from "./shared/supabase/supabase-services/supabase-admin.service";
 import { PlayerRoutesService } from "./shared/supabase/supabase-services/supabase-player-routes.service";
+import { ModalPopupComponent } from "./shared/components/modal-popup/modal-popup.component";
 
 @Component({
   selector: "app-root",
@@ -20,6 +20,7 @@ import { PlayerRoutesService } from "./shared/supabase/supabase-services/supabas
     FooterComponent,
     AdminToolsComponent,
     SlideMenuComponent,
+    ModalPopupComponent,
   ],
   templateUrl: "./app.component.html",
   styleUrl: "./app.component.css",
@@ -30,7 +31,6 @@ export class AppComponent implements OnInit {
   constructor(
     private router: Router,
     private supabaseService: SupabaseService,
-    private supabaseAdminService: SupabaseAdminService,
     private playerRoutesService: PlayerRoutesService
   ) {}
 

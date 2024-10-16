@@ -2,18 +2,19 @@ import { Component, OnInit } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { PlaneModel } from "../../../shared/supabase/supabase-models/UploadPlanes.model";
 import { SupabaseStoreService } from "../../../shared/supabase/supabase-services/supabase-store.service";
+import { catchError } from "rxjs";
 
 @Component({
   selector: "app-airplane-shop",
   standalone: true,
   imports: [CommonModule],
   templateUrl: "./airplane-shop.component.html",
-  styleUrls: ["./airplane-shop.component.css"], // Corrected to 'styleUrls' (plural)
+  styleUrls: ["./airplane-shop.component.css"],
 })
 export class AirplaneShopComponent implements OnInit {
-  planes: PlaneModel[] | null = []; // Initialized as an empty array or null
-  error: string = ""; // Error message handling
-  loading: boolean = true; // Loading initialized to true
+  planes: PlaneModel[] | null = [];
+  error: string = "";
+  isLoading: boolean = true;
 
   constructor(private supabaseStoreService: SupabaseStoreService) {}
 
@@ -25,24 +26,34 @@ export class AirplaneShopComponent implements OnInit {
     this.loadPlanes();
   }
 
-  loadPlanes(): void {
-    this.supabaseStoreService.getPlanes().subscribe({
-      next: (res: any) => {
-        if (res && res.data) {
-          this.planes = res.data;
-        } else {
-          this.planes = [];
-        }
-        this.loading = false;
-      },
-      error: (err) => {
-        this.error = "Failed to load planes";
-        console.error(err);
-        this.loading = false;
-      },
-      complete: () => {
-        this.loading = false;
-      },
-    });
+  loadPlanes() {
+    this.isLoading = true;
+
+    this.supabaseStoreService
+      .getPlanes()
+      .pipe(
+        catchError((error) => {
+          this.handleError(error);
+          throw error;
+        })
+      )
+      .subscribe({
+        next: (res: any) => {
+          if (!res.error) {
+            this.planes = res.data;
+            this.isLoading = false;
+          } else {
+            this.handleError(res.error);
+          }
+        },
+        error: (err: any) => {
+          this.handleError(err);
+        },
+      });
+  }
+  handleError(error: any) {
+    this.error = `There's been an error loading the data! If the problem persists, please contact the administrator.`;
+    console.error(error);
+    this.isLoading = false; //
   }
 }

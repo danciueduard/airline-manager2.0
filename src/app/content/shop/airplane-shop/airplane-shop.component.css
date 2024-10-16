@@ -7,28 +7,5 @@ i {
 }
 
 .item:hover {
-  transform: scale(1.05);
-  transition: 300ms;
-}
-
-.items-container {
-  overflow: auto;
-}
-
-.items-container::-webkit-scrollbar {
-  background-color: transparent;
-}
-
-.items-container::-webkit-scrollbar-button {
-  background-color: transparent;
-}
-
-.items-container::-webkit-scrollbar-thumb {
-  /* background-color: green;
-  border-radius: 100%; */
-  background-color: #818b99;
-  border: 3px solid transparent;
-  border-radius: 9px;
-  background-clip: content-box;
-  height: 3px;
+  scale: 1.05;
 }

@@ -1,10 +1,15 @@
-<app-popup-menu>
-  <div class="d-flex justify-content-start mb-5">
-    <h1>STORE</h1>
+<div class="container popup-menu rounded-4 shadow-lg py-3" #popup>
+  <div class="position-absolute" style="right: 1rem">
+    <button (click)="closeMenu()" class="btn"><p class="h5">x</p></button>
   </div>
-  <div class="container d-flex gap-3 px-5 py-3">
-    <div class="d-flex flex-column gap-4" style="width: 200px">
-      <button
+  <div class="">
+    <div class="d-flex mb-5">
+      <h1>STORE</h1>
+    </div>
+  </div>
+  <div class="d-lg-flex gap-3 justify-content-start">
+    <div class="my-4 buttons-bar d-flex flex-lg-column gap-3 ms-xl-4 ms-lg-5">
+      <div
         routerLinkActive="am-bg-secondary"
         routerLink="airplanes"
         class="btn border border-1 am-bg-primary text-white"
@@ -13,11 +18,11 @@
           src="../../../assets/img/shop-menu/plane-menu-img.jpg"
           alt="image of a plane"
           height="50px"
-          class="rounded-5 position-absolute border border-4 am-border-secondary"
-          style="transform: translate(-210%, -27%)"
+          width="50px"
+          class="rounded-5 border border-4 am-border-secondary"
         />
-        <p>Airplanes</p>
-      </button>
+        <p class="">Airplanes</p>
+      </div>
       <div
         routerLinkActive="am-bg-secondary"
         routerLink="pilots"
@@ -27,8 +32,8 @@
           src="../../../assets/img/shop-menu/pilot-shop-image.jpg"
           alt="image of a plane"
           height="50px"
-          class="rounded-5 position-absolute border border-4 am-border-secondary"
-          style="transform: translate(-210%, -27%)"
+          width="50px"
+          class="rounded-5 border border-4 am-border-secondary"
         />
         <p>Pilots</p>
       </div>
@@ -41,8 +46,8 @@
           src="../../../assets/img/shop-menu/cabin-crew-shop-img.jpg"
           alt="image of a plane"
           height="50px"
-          class="rounded-5 position-absolute border border-4 am-border-secondary"
-          style="transform: translate(-210%, -27%)"
+          width="50px"
+          class="rounded-5 border border-4 am-border-secondary"
         />
         <p>Cabin Crew</p>
       </div>
@@ -55,8 +60,8 @@
           src="../../../assets/img/shop-menu/engineer-shop-image.jpg"
           alt="image of a plane"
           height="50px"
-          class="rounded-5 position-absolute border border-4 am-border-secondary"
-          style="transform: translate(-210%, -27%)"
+          width="50px"
+          class="rounded-5 border border-4 am-border-secondary"
         />
         <p>Engineers</p>
       </div>
@@ -69,15 +74,14 @@
           src="../../../assets/img/shop-menu/airport-shop-image.jpg"
           alt="image of a plane"
           height="50px"
-          class="rounded-5 position-absolute border border-4 am-border-secondary"
-          style="transform: translate(-210%, -27%)"
+          width="50px"
+          class="rounded-5 border border-4 am-border-secondary"
         />
         <p>Airports</p>
       </div>
     </div>
-    <div class="vr"></div>
-    <div style="width: 600px">
+    <div class="items-container">
       <router-outlet></router-outlet>
     </div>
   </div>
-</app-popup-menu>
+</div>

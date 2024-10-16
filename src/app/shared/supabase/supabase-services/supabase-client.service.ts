@@ -8,52 +8,42 @@ import { environment } from "../../../../environments/environment.prod";
   providedIn: "root",
 })
 export class SupabaseService {
-  from(arg0: string) {
-    throw new Error("Method not implemented.");
-  }
   supabase: SupabaseClient = createClient(
     environment.supabaseUrl,
     environment.supabaseAnonKey
   );
 
   getFromSupabase(table: string, columns: string): Observable<any> {
-    const data = this.supabase.from(table).select(columns);
-    return from(data);
+    const dataPromise = this.supabase.from(table).select(columns);
+    return from(dataPromise);
   }
 
   //////////////////////////////////////////////////////////////////////////////
   // Img upload + get url
-  async uploadImg(planeImg) {
-    const { data, error } = await this.supabase.storage
+  uploadImg(planeImg): Observable<any> {
+    const dataPromise = this.supabase.storage
       .from("img")
       .upload(`planeImg/${planeImg.name}`, planeImg, {
         cacheControl: "3600",
         upsert: false,
       });
-
-    if (error) {
-      console.log(error);
-    }
+    return from(dataPromise);
   }
 
-  async getPublicImgUrl(bucketName: string, imgName: string) {
-    const { data } = this.supabase.storage
+  getPublicImgUrl(bucketName: string, imgName: string): Observable<any> {
+    const dataPromise: any = this.supabase.storage
       .from(bucketName)
       .getPublicUrl(imgName);
 
-    return data.publicUrl;
+    return from(dataPromise);
   }
 
   ///////////////////////////////////////////////////////////////////////////////
   // Upload to DB
-  async uploadToDB(table: string, payload: {}) {
-    const { data, error } = await this.supabase
-      .from(table)
-      .insert(payload)
-      .select();
-    if (error) {
-      console.log(error);
-    } else console.log("upload complete");
+  uploadToDB(table: string, payload: {}): Observable<any> {
+    const dataPromise = this.supabase.from(table).insert(payload).select();
+
+    return from(dataPromise);
   }
   /////////////////////////////////////////////////////////////////////////////////
   async getAirportByICAO(icao) {
